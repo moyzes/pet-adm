@@ -1,51 +1,79 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
 	<mat-card class="shipping-card">
 		<mat-card-header>
-			<mat-card-title>Shipping Information</mat-card-title>
+			<mat-card-title>Cadastro de usuários</mat-card-title>
 		</mat-card-header>
 		<mat-card-content>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<input matInput placeholder="Company" formControlName="company">
+						<input matInput placeholder="Id" formControlName="id" readonly>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<input matInput placeholder="First name" formControlName="firstName">
-						<mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+						<input matInput placeholder="Nome" formControlName="nome">
+						<mat-error *ngIf="addressForm.controls['Nome'].hasError('required')">
 							First name is <strong>required</strong>
 						</mat-error>
 					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Last name" formControlName="lastName">
-						<mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
-							Last name is <strong>required</strong>
-						</mat-error>
-					</mat-form-field>
-				</div>
+				</div>				
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea matInput placeholder="Address" formControlName="address"></textarea>
-						<mat-error *ngIf="addressForm.controls['address'].hasError('required')">
-							Address is <strong>required</strong>
+						<input matInput placeholder="Id no Facebook" formControlName="id_facebook">
+						<mat-error *ngIf="addressForm.controls['Nome'].hasError('required')">
+							First name is <strong>required</strong>
 						</mat-error>
 					</mat-form-field>
-				</div>
+				</div>				
 			</div>
-			<div class="row" *ngIf="!hasUnitNumber">
+			<div class="row">
 				<div class="col">
-					<button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
-						+ Add C/O, Apt, Suite, Unit
-					</button>
-				</div>
+					<mat-form-field class="full-width">
+						<input matInput placeholder="Endereço" formControlName="endereco">						
+					</mat-form-field>
+				</div>				
 			</div>
+			<div class="row" *ngIf="hasUnitNumber">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<input matInput placeholder="Cep" formControlName="cep">						
+					</mat-form-field>
+				</div>				
+			</div>
+			<div class="row" *ngIf="hasUnitNumber">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<input matInput placeholder="Numero" formControlName="numero">						
+					</mat-form-field>
+				</div>				
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<input matInput placeholder="País" formControlName="pais">						
+					</mat-form-field>
+				</div>				
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<input matInput placeholder="Estado" formControlName="estado">						
+					</mat-form-field>
+				</div>				
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<input matInput placeholder="Cidade" formControlName="cidade">						
+					</mat-form-field>
+				</div>				
+			</div>
+
 			<div class="row" *ngIf="hasUnitNumber">
 				<div class="col">
 					<mat-form-field class="full-width">
@@ -53,48 +81,10 @@
 					</mat-form-field>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="City" formControlName="city">
-						<mat-error *ngIf="addressForm.controls['city'].hasError('required')">
-							City is <strong>required</strong>
-						</mat-error>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field class="full-width">
-						<mat-select placeholder="State" formControlName="state">
-							<mat-option *ngFor="let state of states" [value]="state.abbreviation">
-								{{ state.name }}
-							</mat-option>
-						</mat-select>
-						<mat-error *ngIf="addressForm.controls['state'].hasError('required')">
-							State is <strong>required</strong>
-						</mat-error>
-					</mat-form-field>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode">
-						<mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-					</mat-form-field>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-radio-group formControlName="shipping">
-						<mat-radio-button value="free">Free Shipping</mat-radio-button>
-						<mat-radio-button value="priority">Priority Shipping</mat-radio-button>
-						<mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
-					</mat-radio-group>
-				</div>
-			</div>
+			
 		</mat-card-content>
 		<mat-card-actions>
-			<button mat-raised-button color="primary" type="submit">Submit</button>
+			<button mat-raised-button color="primary" type="submit">Salvar</button>
 		</mat-card-actions>
 	</mat-card>
 </form>
