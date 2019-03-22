@@ -16,7 +16,7 @@
 					<mat-form-field class="full-width">
 						<input matInput placeholder="Nome" formControlName="nome">
 						<mat-error *ngIf="addressForm.controls['Nome'].hasError('required')">
-							First name is <strong>required</strong>
+							O Campo nome é obrigatório <strong>required</strong>
 						</mat-error>
 					</mat-form-field>
 				</div>				
@@ -24,10 +24,17 @@
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<input matInput placeholder="Id no Facebook" formControlName="id_facebook">
-						<mat-error *ngIf="addressForm.controls['Nome'].hasError('required')">
-							First name is <strong>required</strong>
+						<input matInput placeholder="Email" formControlName="email">
+						<mat-error *ngIf="addressForm.controls['email'].hasError('required')">
+							O Campo email é obrigatório <strong>required</strong>
 						</mat-error>
+					</mat-form-field>
+				</div>				
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<input matInput placeholder="Id no Facebook" formControlName="id_facebook">					
 					</mat-form-field>
 				</div>				
 			</div>
