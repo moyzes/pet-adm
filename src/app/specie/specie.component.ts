@@ -19,3 +19,16 @@ export class SpecieComponent {
 		alert('Obrigado!');
 	}
 }
+export interface Specie { 
+	value: string;
+	viewValue: string;
+}
+export class Species {
+	Species: Specie[] = [
+	  {value: '1', viewValue: 'Cão'},
+	  {value: '2', viewValue: 'Gato'},
+	  {value: '3', viewValue: 'Ave'},
+	  {value: '4', viewValue: 'Roedor'},
+	  {value: '5', viewValue: 'Reptil/Anfíbio'}
+	];
+  }

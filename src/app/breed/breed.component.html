@@ -4,6 +4,20 @@
 			<mat-card-title>Cadastro de raças</mat-card-title>
 		</mat-card-header>
 		<mat-card-content>
+
+				<div class="row">
+					<div class="col">
+
+							<mat-form-field>
+								<mat-label>Selecione uma espécie</mat-label>
+								<mat-option *ngFor="let Specie of Species" [value]="Species.Specie">
+											{{Specie.viewValue}}
+								</mat-option>									
+							</mat-form-field>
+
+					</div>
+				</div>
+
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
