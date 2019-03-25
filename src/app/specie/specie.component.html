@@ -1,0 +1,29 @@
+<form [formGroup]="specieForm" novalidate (ngSubmit)="onSubmit()">
+	<mat-card class="shipping-card">
+		<mat-card-header>
+			<mat-card-title>Cadastro de espécies</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<input matInput placeholder="Id" formControlName="id" readonly>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<input matInput placeholder="Nome" formControlName="name">
+						<mat-error *ngIf="specieForm.controls['name'].hasError('required')">
+							O Campo nome é obrigatório <strong>required</strong>
+						</mat-error>
+					</mat-form-field>
+				</div>				
+			</div>
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-raised-button color="primary" type="submit">Salvar</button>
+		</mat-card-actions>
+	</mat-card>
+</form>

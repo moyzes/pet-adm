@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
+import { SpecieComponent } from './specie/specie.component';
+import { BreedComponent } from './breed/breed.component';
 
 const routes: Routes = [
 	{path: 'user', component: UserComponent},
+	{path: 'specie', component: SpecieComponent},
+	{path: 'breed', component: BreedComponent}
 ];
 
 @NgModule({
