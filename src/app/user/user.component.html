@@ -1,95 +1,38 @@
-<form [formGroup]="userForm" novalidate (ngSubmit)="onSubmit()">
-	<mat-card class="shipping-card">
-		<mat-card-header>
-			<mat-card-title>Cadastro de usuários</mat-card-title>
-		</mat-card-header>
-		<mat-card-content>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Id" formControlName="id" readonly>
-					</mat-form-field>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Nome" formControlName="name">
-						<mat-error *ngIf="addressForm.controls['name'].hasError('required')">
-							O Campo nome é obrigatório <strong>required</strong>
-						</mat-error>
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Email" formControlName="email">
-						<mat-error *ngIf="addressForm.controls['email'].hasError('required')">
-							O Campo email é obrigatório <strong>required</strong>
-						</mat-error>
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Id no Facebook" formControlName="id_facebook">					
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Id no Google" formControlName="id_google">					
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Endereço" formControlName="address">						
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row" *ngIf="hasUnitNumber">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Cep" formControlName="zip">						
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row" *ngIf="hasUnitNumber">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Numero" formControlName="number">						
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="País" formControlName="country">						
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Estado" formControlName="estate">						
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Cidade" formControlName="city">						
-					</mat-form-field>
-				</div>				
-			</div>
-		</mat-card-content>
-		<mat-card-actions>
-			<button mat-raised-button color="primary" type="submit">Salvar</button>
-		</mat-card-actions>
-	</mat-card>
-</form>
+<div class="col-md-6">
+	<h2> Usuários </h2>
+	
+	<table class="table table-striped">
+	  <thead>
+	  <tr>
+		<th>Id</th>
+		<th>Endereço</th>
+		<th>Cidade</th>
+		<th>País</th>
+		<th>Email</th>
+		<th>Estado</th>
+		<th>Facebook</th>
+		<th>Google</th>
+		<th>Localização</th>
+		<th>Nome</th>
+		<th>Cep:</th>
+		<th>Ação</th>
+
+	  </tr>
+	</thead>
+	  <tbody>
+	  <tr *ngFor="let user of users">
+		<td>{{user.id}}</td>
+		<td>{{user.adress}}</td>
+		<td>{{user.city}}</td>
+		<td>{{user.country}}</td>
+		<td>{{user.email}}</td>
+		<td>{{user.estate}}</td>
+		<td>{{user.id_facebook}}</td>
+		<td>{{user.id_google}}</td>
+		<td>{{user.lastlocation}}</td>
+		<td>{{user.name}}</td>
+		<td><button class="btn btn-danger" (click)="deleteUser(user)">Excluir</button></td>
+	  </tr>
+	  </tbody>
+	</table>
+	</div>

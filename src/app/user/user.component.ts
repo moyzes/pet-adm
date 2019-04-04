@@ -1,22 +1,33 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from './user.model';
+import { UserService } from './user.service';
 
 @Component({
 	selector: 'app-user',
 	templateUrl: './user.component.html',
 	styleUrls: ['./user.component.css']
 })
-export class UserComponent {
-	addressForm = this.fb.group({
-		name: [null, Validators.required],
-		email: [null, Validators.required]
-	});
+export class UserComponent implements OnInit{
+	
+	users: User[];
 
-	hasUnitNumber = false;
-
-	constructor(private fb: FormBuilder) {}
-
-	onSubmit() {
-		alert('Obrigado!');
+	constructor(private router: Router, private userService: UserService) {
+  
 	}
+  
+	ngOnInit() {
+	  this.userService.getUsers()
+		.subscribe( data => {
+		  this.users = data;
+		});
+	};
+  
+	deleteUser(user: User): void {
+	  this.userService.deleteUser(user)
+		.subscribe( data => {
+		  this.users = this.users.filter(u => u !== user);
+		})
+	};
+
 }
