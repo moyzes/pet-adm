@@ -26,11 +26,15 @@ export class UserService {
   }
 
   public deleteUser(user: User) {
-    return this.http.delete(this.userUrl + "/"+ user.id);
+    return this.http.delete(this.userUrl + "/"+ "deleteUser" + "/" + user.id);
   }
 
   public createUser(user: User) {
-    return this.http.post<User>(this.userUrl, user);
+    return this.http.post<User>(this.userUrl + "/" + "addUser", user);
+  }
+
+  public updateUser(user: User) {
+    return this.http.put<User>(this.userUrl + "/" + "updateUser" + "/" + user.id, user);
   }
 
 }

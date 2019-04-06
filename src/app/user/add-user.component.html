@@ -1,58 +1,64 @@
-<div class="col-md-6">
-  <h2 class="text-center">Adicionar Usuário</h2>
-<form>
+<form> 
+<mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Cadastro de usuários</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+                    
 
-<div class="form-group">
-        <label for="id">Id:</label>
-        <input [(ngModel)]="user.id" placeholder="Id" name="Id" class="form-control" id="id">
-</div>
+                <div class="row">
+                        <div class="col">
+                            <mat-form-field class="full-width">
+                                <input [(ngModel)]="user.name" placeholder="name" name="name" class="form-control" id="name">
+                            </mat-form-field>
+                        </div>
+                </div>
 
-<div class="form-group">
-        <label for="city">Nome:</label>
-        <input [(ngModel)]="user.name" placeholder="name" name="name" class="form-control" id="name">
-</div>
+                <div class="form-group">
+                        <label for="adress">Endereço:</label>
+                        <input [(ngModel)]="user.adress" placeholder="adress" name="adress" class="form-control" id="adress">
+                </div>
 
-<div class="form-group">
-        <label for="adress">Endereço:</label>
-        <input [(ngModel)]="user.adress" placeholder="adress" name="adress" class="form-control" id="adress">
-</div>
+                <div class="form-group">
+                        <label for="city">Cidade:</label>
+                        <input [(ngModel)]="user.city" placeholder="city" name="city" class="form-control" id="city">
+                </div>
 
-<div class="form-group">
-        <label for="city">Cidade:</label>
-        <input [(ngModel)]="user.city" placeholder="city" name="city" class="form-control" id="city">
-</div>
+                <div class="form-group">
+                        <label for="country">País:</label>
+                        <input [(ngModel)]="user.country" placeholder="country" name="country" class="form-control" id="country">
+                </div>
 
-<div class="form-group">
-        <label for="country">País:</label>
-        <input [(ngModel)]="user.country" placeholder="country" name="country" class="form-control" id="country">
-</div>
+                <div class="form-group">
+                        <label for="estate">Estado:</label>
+                        <input [(ngModel)]="user.estate" placeholder="estate" name="estate" class="form-control" id="estate">
+                </div>
 
-<div class="form-group">
-        <label for="estate">Estado:</label>
-        <input [(ngModel)]="user.estate" placeholder="estate" name="estate" class="form-control" id="estate">
-</div>
+                <div class="form-group">
+                    <label for="id_facebook">Facebook:</label>
+                    <input [(ngModel)]="user.id_facebook" placeholder="id_facebook" name="id_facebook" class="form-control" id="id_facebook">
+                </div>
 
-  <div class="form-group">
-    <label for="id_facebook">Facebook:</label>
-    <input [(ngModel)]="user.id_facebook" placeholder="id_facebook" name="id_facebook" class="form-control" id="id_facebook">
-  </div>
-
-  <div class="form-group">
-        <label for="id_google">Googe:</label>
-        <input [(ngModel)]="user.id_google" placeholder="id_google" name="id_google" class="form-control" id="id_google">
-      </div>
+                <div class="form-group">
+                        <label for="id_google">Googe:</label>
+                        <input [(ngModel)]="user.id_google" placeholder="id_google" name="id_google" class="form-control" id="id_google">
+                    </div>
 
 
-  <div class="form-group">
-        <label for="lastlocation">Localização:</label>
-        <input [(ngModel)]="user.lastlocation" placeholder="lastlocation" name="lastlocation" class="form-control" id="lastlocation">
-      </div>
+                <div class="form-group">
+                        <label for="lastlocation">Localização:</label>
+                        <input [(ngModel)]="user.lastlocation" placeholder="lastlocation" name="lastlocation" class="form-control" id="lastlocation">
+                    </div>
 
-      <div class="form-group">
-            <label for="zipcode">Cep:</label>
-            <input [(ngModel)]="user.zipcode" placeholder="zipcode" name="zipcode" class="form-control" id="zipcode">
-          </div>
+                    <div class="form-group">
+                            <label for="zipcode">Cep:</label>
+                            <input [(ngModel)]="user.zipcode" placeholder="zipcode" name="zipcode" class="form-control" id="zipcode">
+                        </div>
 
-  <button class="btn btn-success" (click)="createUser()">Salvar</button>
+                <button class="btn btn-success" (click)="createUser()">Salvar</button>
+            
+</mat-card-content>
+</mat-card>
 </form>
-</div>
+
+
