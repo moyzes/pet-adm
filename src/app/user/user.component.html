@@ -1,43 +1,30 @@
-<div class="col-md-6">
+<div>
+
 	<h2> Usuários </h2>
-	
-	<a routerLink="/adduser" routerLinkActive="active">Cadastrar usuário</a>
 
-	<table class="table table-striped">
-	  <thead>
-	  <tr>
-		<th>Id</th>
-		<th>Endereço</th>
-		<th>Cidade</th>
-		<th>País</th>
-		<th>Email</th>
-		<th>Estado</th>
-		<th>Facebook</th>
-		<th>Google</th>
-		<th>Localização</th>
-		<th>Nome</th>
-		<th>Cep:</th>
-		<th>Ação</th>
+	<button mat-raised-button color="primary" routerLink="/adduser">Novo usuário</button>
+	<p></p>
+	<mat-table [dataSource]="users">
 
-	  </tr>
-	</thead>
-	  <tbody>
-	  <tr *ngFor="let user of users">
-		<td>{{user.id}}</td>
-		<td>{{user.adress}}</td>
-		<td>{{user.city}}</td>
-		<td>{{user.country}}</td>
-		<td>{{user.email}}</td>
-		<td>{{user.estate}}</td>
-		<td>{{user.id_facebook}}</td>
-		<td>{{user.id_google}}</td>
-		<td>{{user.lastlocation}}</td>
-		<td>{{user.name}}</td>
-		<td>
-			<button class="btn btn-danger" (click)="deleteUser(user)">Excluir</button>
-			<button class="btn btn-danger" (click)="editUser(user)">Editar</button>
-		</td>
-	  </tr>
-	  </tbody>
-	</table>
-	</div>
+		<ng-container matColumnDef="name">
+			<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+			<mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="email">
+			<mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+			<mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="acao">
+			<mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
+			<mat-cell *matCellDef="let user">
+				<button class="btn btn-danger" (click)="deleteUser(user)">Excluir</button>
+				<button class="btn btn-danger" (click)="editUser(user)">Editar</button>
+			</mat-cell>
+		</ng-container>
+
+		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+		<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		
+	</mat-table>

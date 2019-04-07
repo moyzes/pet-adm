@@ -19,7 +19,7 @@ export class AddUserComponent {
   createUser(): void {
     this.userService.createUser(this.user)
         .subscribe( data => {
-          alert("User created successfully.");
+          alert("Usuário salvo com sucesso!");
         });
 
   };

@@ -14,6 +14,8 @@ import { BreedComponent } from './breed/breed.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddUserComponent } from './user/add-user.component';
 import { UserService } from './user/user.service';
+import { MatTableModule } from '@angular/material';
+import {DataSource} from '@angular/cdk/collections';
 
 @NgModule({
 	declarations: [
@@ -40,7 +42,8 @@ import { UserService } from './user/user.service';
 		MatSelectModule,
 		MatRadioModule,
 		MatCardModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		MatTableModule
 	],
 	providers: [UserService],
 	bootstrap: [AppComponent]

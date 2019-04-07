@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from './user.model';
 import { UserService } from './user.service';
+import { MatTableModule } from '@angular/material';
+import {DataSource} from '@angular/cdk/collections';
 
 @Component({
 	selector: 'app-user',
@@ -11,6 +13,7 @@ import { UserService } from './user.service';
 export class UserComponent implements OnInit{
 	
 	users: User[];
+	displayedColumns = ['name', 'email'];
 
 	constructor(private router: Router, private userService: UserService) {
   
@@ -22,7 +25,8 @@ export class UserComponent implements OnInit{
 		  this.users = data;
 		});
 	};
-  
+
+	
 	deleteUser(user: User): void {
 	  this.userService.deleteUser(user)
 		.subscribe( data => {
@@ -31,3 +35,5 @@ export class UserComponent implements OnInit{
 	};
 
 }
+
+
