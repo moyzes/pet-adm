@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Specie } from './specie.model';
@@ -13,14 +13,12 @@ export class SpecieService {
 
   constructor(private http:HttpClient) {}
 
-  // private userUrl = 'https://procura-pet.herokuapp.com/';
+  // private url = 'https://procura-pet.herokuapp.com/';
   private url = '/api'; 
   
   public getSpecie(specie: { id: string; }) {
     return this.http.get<Specie[]>(this.url + "/" + "getSpecie" + "/" + specie.id);
   }
-
-
 
   public getSpecies() {
     return this.http.get<Specie[]>(this.url + "/" + "listSpecies");

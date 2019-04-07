@@ -19,7 +19,7 @@ export class AddSpecieComponent {
   createSpecie(): void {
     this.specieService.createSpecie(this.specie)
         .subscribe( data => {
-          alert("Specie salva com sucesso!");
+          alert("Espécie salva com sucesso!");
         });
 
   };
