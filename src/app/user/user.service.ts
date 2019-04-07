@@ -14,27 +14,27 @@ export class UserService {
   constructor(private http:HttpClient) {}
 
   // private userUrl = 'https://procura-pet.herokuapp.com/';
-  private userUrl = '/api'; 
+  private url = '/api'; 
   
   public getUser(user: { id: string; }) {
-    return this.http.get<User[]>(this.userUrl + "/" + "getUser" + "/" + user.id);
+    return this.http.get<User[]>(this.url + "/" + "getUser" + "/" + user.id);
   }
 
 
   public getUsers() {
-    return this.http.get<User[]>(this.userUrl + "/" + "listUsers");
+    return this.http.get<User[]>(this.url + "/" + "listUsers");
   }
 
   public deleteUser(user: User) {
-    return this.http.delete(this.userUrl + "/"+ "deleteUser" + "/" + user.id);
+    return this.http.delete(this.url + "/"+ "deleteUser" + "/" + user.id);
   }
 
   public createUser(user: User) {
-    return this.http.post<User>(this.userUrl + "/" + "addUser", user);
+    return this.http.post<User>(this.url + "/" + "addUser", user);
   }
 
   public updateUser(user: User) {
-    return this.http.put<User>(this.userUrl + "/" + "updateUser" + "/" + user.id, user);
+    return this.http.put<User>(this.url + "/" + "updateUser" + "/" + user.id, user);
   }
 
 }

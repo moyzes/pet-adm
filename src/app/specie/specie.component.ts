@@ -1,34 +1,37 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Specie } from './specie.model';
+import { SpecieService } from './specie.service';
+import { MatTableModule } from '@angular/material';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
 	selector: 'app-specie',
 	templateUrl: './specie.component.html',
 	styleUrls: ['./specie.component.css']
 })
-export class SpecieComponent {
-	specieForm = this.fb.group({
-		name: null
-	});
+export class SpecieComponent implements OnInit{
+	
+	species: Specie[];
+	displayedColumns = ['name'];
 
-	hasUnitNumber = false;
-
-	constructor(private fb: FormBuilder) {}
-
-	onSubmit() {
-		alert('Obrigado!');
+	constructor(private router: Router, private specieService: SpecieService) {
+  
 	}
+  
+	ngOnInit() {
+	  this.specieService.getSpecies()
+		.subscribe( data => {
+		  this.species = data;
+		});
+	};
+
+	
+	deleteSpecie(specie: Specie): void {
+	  this.specieService.deleteSpecie(specie)
+		.subscribe( data => {
+		  this.species = this.species.filter(u => u !== specie);
+		})
+	};
+
 }
-export interface Specie { 
-	value: string;
-	viewValue: string;
-}
-export class Species {
-	Species: Specie[] = [
-	  {value: '1', viewValue: 'Cão'},
-	  {value: '2', viewValue: 'Gato'},
-	  {value: '3', viewValue: 'Ave'},
-	  {value: '4', viewValue: 'Roedor'},
-	  {value: '5', viewValue: 'Reptil/Anfíbio'}
-	];
-  }

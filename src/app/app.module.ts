@@ -14,8 +14,10 @@ import { BreedComponent } from './breed/breed.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddUserComponent } from './user/add-user.component';
 import { UserService } from './user/user.service';
+import { SpecieService } from './specie/specie.service';
 import { MatTableModule } from '@angular/material';
 import {DataSource} from '@angular/cdk/collections';
+import { AddSpecieComponent } from './specie/add-specie.component';
 
 @NgModule({
 	declarations: [
@@ -23,6 +25,7 @@ import {DataSource} from '@angular/cdk/collections';
 		MenuComponent,
 		UserComponent,
 		AddUserComponent,
+		AddSpecieComponent,
 		SpecieComponent,
 		BreedComponent
 	],
@@ -45,7 +48,7 @@ import {DataSource} from '@angular/cdk/collections';
 		ReactiveFormsModule,
 		MatTableModule
 	],
-	providers: [UserService],
+	providers: [UserService,SpecieService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

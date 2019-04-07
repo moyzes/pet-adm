@@ -1,21 +1,19 @@
-<div>
+<h2> Usuários </h2>
 
-	<h2> Usuários </h2>
+<button mat-raised-button color="primary" routerLink="/adduser">Novo usuário</button>
+<p></p>
+<mat-table [dataSource]="users">
 
-	<button mat-raised-button color="primary" routerLink="/adduser">Novo usuário</button>
-	<p></p>
-	<mat-table [dataSource]="users">
+	<ng-container matColumnDef="name">
+		<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+		<mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+	</ng-container>
 
-		<ng-container matColumnDef="name">
-			<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-			<mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
-		</ng-container>
-
-		<ng-container matColumnDef="email">
-			<mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-			<mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
-		</ng-container>
-
+	<ng-container matColumnDef="email">
+		<mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+		<mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+	</ng-container>
+	<!--
 		<ng-container matColumnDef="acao">
 			<mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
 			<mat-cell *matCellDef="let user">
@@ -23,8 +21,8 @@
 				<button class="btn btn-danger" (click)="editUser(user)">Editar</button>
 			</mat-cell>
 		</ng-container>
+-->
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-		<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-		
-	</mat-table>
+</mat-table>
