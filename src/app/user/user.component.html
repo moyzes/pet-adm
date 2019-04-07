@@ -1,6 +1,8 @@
 <div class="col-md-6">
 	<h2> Usuários </h2>
 	
+	<a routerLink="/adduser" routerLinkActive="active">Cadastrar usuário</a>
+
 	<table class="table table-striped">
 	  <thead>
 	  <tr>
@@ -31,7 +33,10 @@
 		<td>{{user.id_google}}</td>
 		<td>{{user.lastlocation}}</td>
 		<td>{{user.name}}</td>
-		<td><button class="btn btn-danger" (click)="deleteUser(user)">Excluir</button></td>
+		<td>
+			<button class="btn btn-danger" (click)="deleteUser(user)">Excluir</button>
+			<button class="btn btn-danger" (click)="editUser(user)">Editar</button>
+		</td>
 	  </tr>
 	  </tbody>
 	</table>

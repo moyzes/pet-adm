@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 	styles: []
 })
 export class AppComponent {
-	title = 'pet-adm';
+	title = 'ProcuraPet - Administração';
 }
