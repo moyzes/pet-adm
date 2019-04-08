@@ -1,86 +1,40 @@
-<form [formGroup]="breedForm" novalidate (ngSubmit)="onSubmit()">
-	<mat-card class="shipping-card">
-		<mat-card-header>
-			<mat-card-title>Cadastro de raças</mat-card-title>
-		</mat-card-header>
-		<mat-card-content>
+<h2> Raças </h2>
 
-				<div class="row">
-					<div class="col">
+<button mat-raised-button color="primary" routerLink="/addbreed">Nova raça</button>
+<p></p>
+<mat-table [dataSource]="breeds">
 
-							<mat-form-field>
-								<mat-label>Selecione uma espécie</mat-label>
-								<mat-option *ngFor="let Specie of Species" [value]="Species.Specie">
-											{{Specie.viewValue}}
-								</mat-option>									
-							</mat-form-field>
+	<ng-container matColumnDef="name">
+		<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+		<mat-cell *matCellDef="let breed"> {{breed.name}} </mat-cell>
+	</ng-container>
 
-					</div>
-				</div>
+	<ng-container matColumnDef="origin">
+		<mat-header-cell *matHeaderCellDef> Origem </mat-header-cell>
+		<mat-cell *matCellDef="let breed"> {{breed.origin}} </mat-cell>
+	</ng-container>
 
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Id" formControlName="id" readonly>
-					</mat-form-field>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input matInput placeholder="Nome" formControlName="name">
-						<mat-error *ngIf="breedForm.controls['name'].hasError('required')">
-							O Campo nome é obrigatório <strong>required</strong>
-						</mat-error>
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">						
-						<textarea matInput placeholder="Slogan" formControlName="slogan"></textarea>
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">						
-						<textarea matInput placeholder="Resumo" formControlName="summary"></textarea>
-					</mat-form-field>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">						
-						<textarea matInput placeholder="Informações" formControlName="information"></textarea>
-					</mat-form-field>
-				</div>				
-			</div>	
-					
-		</mat-card-content>
-		<mat-card-actions>
-			<button mat-raised-button color="primary" type="submit">Salvar</button>
-		</mat-card-actions>
-	</mat-card>
-</form>
+	<ng-container matColumnDef="slogan">
+		<mat-header-cell *matHeaderCellDef> Slogan </mat-header-cell>
+		<mat-cell *matCellDef="let breed"> {{breed.slogan}} </mat-cell>
+	</ng-container>
 
+	<ng-container matColumnDef="action">
+		<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+		<mat-cell *matCellDef="let breed"> 			
+				<button mat-raised-button color="primary" (click)="deleteBreed(breed)">Apagar</button> 
+		</mat-cell>
+	</ng-container>
+
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
 <!--
-`min_life`     smallint(2) NOT NULL ,
-`max_life`     smallint(2) NOT NULL ,
-`min_height`   smallint(2) NOT NULL ,
-`max_height`   smallint(2) NOT NULL ,
-`min_weight`     smallint(2) NOT NULL ,
-`max_weight`     smallint(2) NOT NULL ,
-`curiosity` varchar(5000) ,
-`care`     varchar(5000) ,
-`look`    varchar(2000) ,
-`hair`      varchar(2000) ,
-`collor`          varchar(2000) ,
-`puppies`     varchar(2000) ,
+maxheight: number;
+maxlifetime: number;
+maxweight: number;
+minheight: number;
+minlifetime: number;
+minweight: number;
 -->
-
-
-
-
-
-

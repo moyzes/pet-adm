@@ -1,18 +1,18 @@
-<h2> Espécies </h2>
+<h2> Tipos de atributo </h2>
 
-<button mat-raised-button color="primary" routerLink="/addspecie">Nova specie</button>
+<button mat-raised-button color="primary" routerLink="/addattributetype">Novo tipo de atributo</button>
 <p></p>
-<mat-table [dataSource]="species">
+<mat-table [dataSource]="attributetypes">
 
 	<ng-container matColumnDef="name">
 		<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-		<mat-cell *matCellDef="let specie"> {{specie.name}} </mat-cell>
+		<mat-cell *matCellDef="let attributetype"> {{attributetype.name}} </mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="action">
 		<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
-		<mat-cell *matCellDef="let specie">
-			<button mat-raised-button color="primary" (click)="deleteSpecie(specie)">Apagar</button>
+		<mat-cell *matCellDef="let attributetype">
+			<button mat-raised-button color="primary" (click)="deleteAttributeType(attributetype)">Apagar</button>
 		</mat-cell>
 	</ng-container>
 

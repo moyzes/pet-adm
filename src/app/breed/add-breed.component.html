@@ -1,0 +1,68 @@
+<form>
+        <mat-card class="shipping-card">
+                <mat-card-header>
+                        <mat-card-title>Cadastro de raças</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                        <div class="row">
+                                <div class="col">
+                                        <mat-form-field class="full-width">
+                                                <input [(ngModel)]="breed.name" matInput placeholder="Nome" name="name">
+                                        </mat-form-field>
+                                </div>
+                        </div>     
+                        <div class="row">
+                                <div class="col">
+                                        <mat-form-field class="full-width">
+                                                <input [(ngModel)]="breed.origin" matInput placeholder="Origem" name="origin">
+                                        </mat-form-field>
+                                </div>
+                        </div> 
+                        <div class="row">
+                                <div class="col">
+                                        <mat-form-field class="full-width">
+                                                <input [(ngModel)]="breed.slogan" matInput placeholder="Slogan" name="slogan">
+                                        </mat-form-field>
+                                </div>
+                        </div>        
+                        <div class="row">
+                                <div class="col">
+                                        <mat-form-field class="full-width">
+                                                <input [(ngModel)]="breed.summary" matInput placeholder="Resumo" name="summary">
+                                        </mat-form-field>
+                                </div>
+                        </div>     
+                        <div class="row">
+                                <div class="col">
+                                        <mat-form-field class="full-width">
+                                                <input [(ngModel)]="breed.information" matInput placeholder="Informações" name="information">
+                                        </mat-form-field>
+                                </div>
+                        </div>  
+                        <div class="row">
+                                <div class="col">
+                                        <mat-form-field class="full-width">
+                                                <input [(ngModel)]="breed.look" matInput placeholder="Aparência" name="look">
+                                        </mat-form-field>
+                                </div>
+                        </div>  
+                        <div class="row">
+                                <div class="col">
+                                        <mat-form-field class="full-width">
+                                                <input [(ngModel)]="breed.care" matInput placeholder="Cuidados e bem estar" name="care">
+                                        </mat-form-field>
+                                </div>
+                        </div>  
+                        <div class="row">
+                                <div class="col">
+                                        <mat-form-field class="full-width">
+                                                <input [(ngModel)]="breed.curiosity" matInput placeholder="Curiosidades" name="curiosity">
+                                        </mat-form-field>
+                                </div>
+                        </div>  
+                </mat-card-content>
+                <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="createBreed()">Salvar</button>
+                </mat-card-actions>
+        </mat-card>
+</form>

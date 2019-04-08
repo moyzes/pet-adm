@@ -8,16 +8,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule } from '@angular/material';
-import { UserComponent } from './user/user.component';
-import { SpecieComponent } from './specie/specie.component';
-import { BreedComponent } from './breed/breed.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material';
+
+import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user.component';
 import { UserService } from './user/user.service';
-import { SpecieService } from './specie/specie.service';
-import { MatTableModule } from '@angular/material';
-import {DataSource} from '@angular/cdk/collections';
+
+import { SpecieComponent } from './specie/specie.component';
 import { AddSpecieComponent } from './specie/add-specie.component';
+import { SpecieService } from './specie/specie.service';
+
+import { AttributeTypeComponent } from './attributetype/attributetype.component';
+import { AddAttributeTypeComponent } from './attributetype/add-attributetype.component';
+import { AttributeTypeService } from './attributetype/attributetype.service';
+
+import { BreedComponent } from './breed/breed.component';
+import { BreedService } from './breed/breed.service';
+import { AddBreedComponent } from './breed/add-breed.component';
 
 @NgModule({
 	declarations: [
@@ -27,6 +35,9 @@ import { AddSpecieComponent } from './specie/add-specie.component';
 		AddUserComponent,
 		AddSpecieComponent,
 		SpecieComponent,
+		AddAttributeTypeComponent,
+		AttributeTypeComponent,
+		AddBreedComponent,
 		BreedComponent
 	],
 	imports: [
@@ -48,7 +59,7 @@ import { AddSpecieComponent } from './specie/add-specie.component';
 		ReactiveFormsModule,
 		MatTableModule
 	],
-	providers: [UserService,SpecieService],
+	providers: [UserService,SpecieService,AttributeTypeService,BreedService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

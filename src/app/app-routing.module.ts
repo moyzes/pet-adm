@@ -7,14 +7,22 @@ import { AddUserComponent } from './user/add-user.component';
 import { SpecieComponent } from './specie/specie.component';
 import { AddSpecieComponent } from './specie/add-specie.component';
 
+import { AttributeTypeComponent } from './attributetype/attributetype.component';
+import { AddAttributeTypeComponent } from './attributetype/add-attributetype.component';
+
 import { BreedComponent } from './breed/breed.component';
+import { AddBreedComponent } from './breed/add-breed.component';
+
 
 const routes: Routes = [
 	{path: 'user', component: UserComponent},
 	{path: 'adduser', component: AddUserComponent},
-	{path: 'addspecie', component: AddSpecieComponent},
 	{path: 'specie', component: SpecieComponent},
-	{path: 'breed', component: BreedComponent}
+	{path: 'addspecie', component: AddSpecieComponent},
+	{path: 'attributetype', component: AttributeTypeComponent},
+	{path: 'addattributetype', component: AddAttributeTypeComponent},
+	{path: 'breed', component: BreedComponent},
+	{path: 'addbreed', component: AddBreedComponent}
 ];
 
 @NgModule({

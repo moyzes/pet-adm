@@ -13,7 +13,7 @@ import {DataSource} from '@angular/cdk/collections';
 export class UserComponent implements OnInit{
 	
 	users: User[];
-	displayedColumns = ['name', 'email'];
+	displayedColumns = ['name', 'email','action'];
 
 	constructor(private router: Router, private userService: UserService) {
   

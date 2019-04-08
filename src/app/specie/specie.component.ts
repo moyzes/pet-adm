@@ -13,7 +13,7 @@ import { DataSource } from '@angular/cdk/collections';
 export class SpecieComponent implements OnInit{
 	
 	species: Specie[];
-	displayedColumns = ['name'];
+	displayedColumns = ['name','action'];
 
 	constructor(private router: Router, private specieService: SpecieService) {
   
