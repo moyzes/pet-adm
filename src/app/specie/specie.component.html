@@ -12,6 +12,7 @@
 	<ng-container matColumnDef="action">
 		<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
 		<mat-cell *matCellDef="let specie">
+			<button mat-raised-button color="primary" (click)="editSpecie(specie)">Editar</button>&nbsp;
 			<button mat-raised-button color="primary" (click)="deleteSpecie(specie)">Apagar</button>
 		</mat-cell>
 	</ng-container>

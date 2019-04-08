@@ -17,6 +17,7 @@ import { UserService } from './user/user.service';
 
 import { SpecieComponent } from './specie/specie.component';
 import { AddSpecieComponent } from './specie/add-specie.component';
+import { EditSpecieComponent } from './specie/edit-specie.component';
 import { SpecieService } from './specie/specie.service';
 
 import { AttributeTypeComponent } from './attributetype/attributetype.component';
@@ -35,6 +36,7 @@ import { AddBreedComponent } from './breed/add-breed.component';
 		AddUserComponent,
 		AddSpecieComponent,
 		SpecieComponent,
+		EditSpecieComponent,
 		AddAttributeTypeComponent,
 		AttributeTypeComponent,
 		AddBreedComponent,

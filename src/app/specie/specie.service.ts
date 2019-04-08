@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import {Router} from "@angular/router";
 import { Specie } from './specie.model';
 
 
@@ -11,13 +11,13 @@ const httpOptions = {
 @Injectable()
 export class SpecieService {
 
-  constructor(private http:HttpClient) {}
+  constructor(private router: Router, private http:HttpClient) {}
 
   // private url = 'https://procura-pet.herokuapp.com/';
   private url = '/api'; 
   
-  public getSpecie(specie: { id: string; }) {
-    return this.http.get<Specie[]>(this.url + "/" + "getSpecie" + "/" + specie.id);
+  public getSpecie(id: number) {
+    return this.http.get<Specie[]>(this.url + "/" + "getSpecie" + "/" + id);
   }
 
   public getSpecies() {
@@ -29,7 +29,9 @@ export class SpecieService {
   }
 
   public createSpecie(specie: Specie) {
+    this.router.navigate(['specie']);
     return this.http.post<Specie>(this.url + "/" + "addSpecie", specie);
+    
   }
 
   public updateSpecie(specie: Specie) {

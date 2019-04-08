@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Specie } from './specie.model';
 import { SpecieService } from './specie.service';
-import { MatTableModule } from '@angular/material';
-import { DataSource } from '@angular/cdk/collections';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @Component({
 	selector: 'app-specie',
@@ -28,10 +27,19 @@ export class SpecieComponent implements OnInit{
 
 	
 	deleteSpecie(specie: Specie): void {
-	  this.specieService.deleteSpecie(specie)
-		.subscribe( data => {
-		  this.species = this.species.filter(u => u !== specie);
-		})
+
+		if(confirm("Confirma a exclusão?")){
+			this.specieService.deleteSpecie(specie)
+			.subscribe( data => {
+				this.species = this.species.filter(u => u !== specie);
+			})
+		}
 	};
+
+	editSpecie(specie: Specie): void {
+    localStorage.removeItem("editSpecieId");
+    localStorage.setItem("editSpecieId", specie.id+"");
+    this.router.navigate(['editspecie']);
+  };
 
 }

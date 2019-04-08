@@ -6,6 +6,7 @@ import { AddUserComponent } from './user/add-user.component';
 
 import { SpecieComponent } from './specie/specie.component';
 import { AddSpecieComponent } from './specie/add-specie.component';
+import { EditSpecieComponent } from './specie/edit-specie.component';
 
 import { AttributeTypeComponent } from './attributetype/attributetype.component';
 import { AddAttributeTypeComponent } from './attributetype/add-attributetype.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
 	{path: 'adduser', component: AddUserComponent},
 	{path: 'specie', component: SpecieComponent},
 	{path: 'addspecie', component: AddSpecieComponent},
+	{path: 'editspecie', component: EditSpecieComponent},
 	{path: 'attributetype', component: AttributeTypeComponent},
 	{path: 'addattributetype', component: AddAttributeTypeComponent},
 	{path: 'breed', component: BreedComponent},
