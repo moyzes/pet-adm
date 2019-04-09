@@ -4,7 +4,7 @@ export class User {
     city:	    string;
     country:	string;
     email:	    string;
-    estate:	    string; 
+    state:	    string; 
     id_facebook:	string;
     id_google:	    string;
     lastlocation:	string;

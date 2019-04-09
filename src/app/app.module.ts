@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material';
 
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user.component';
+import { EditUserComponent } from './user/edit-user.component';
 import { UserService } from './user/user.service';
 
 import { SpecieComponent } from './specie/specie.component';
@@ -34,6 +35,7 @@ import { AddBreedComponent } from './breed/add-breed.component';
 		MenuComponent,
 		UserComponent,
 		AddUserComponent,
+		EditUserComponent,
 		AddSpecieComponent,
 		SpecieComponent,
 		EditSpecieComponent,

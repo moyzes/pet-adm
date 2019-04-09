@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user.component';
+import { EditUserComponent } from './user/edit-user.component';
 
 import { SpecieComponent } from './specie/specie.component';
 import { AddSpecieComponent } from './specie/add-specie.component';
@@ -18,6 +19,7 @@ import { AddBreedComponent } from './breed/add-breed.component';
 const routes: Routes = [
 	{path: 'user', component: UserComponent},
 	{path: 'adduser', component: AddUserComponent},
+	{path: 'edituser', component: EditUserComponent},
 	{path: 'specie', component: SpecieComponent},
 	{path: 'addspecie', component: AddSpecieComponent},
 	{path: 'editspecie', component: EditSpecieComponent},

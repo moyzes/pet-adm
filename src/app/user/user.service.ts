@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import {Router} from "@angular/router";
 import { User } from './user.model';
 
 
@@ -11,15 +11,14 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  constructor(private http:HttpClient) {}
+  constructor(private router: Router, private http:HttpClient) {}
 
   // private userUrl = 'https://procura-pet.herokuapp.com/';
   private url = '/api'; 
   
-  public getUser(user: { id: string; }) {
-    return this.http.get<User[]>(this.url + "/" + "getUser" + "/" + user.id);
+  public getUser(id: number) {
+    return this.http.get<User[]>(this.url + "/" + "getUser" + "/" + id);
   }
-
 
   public getUsers() {
     return this.http.get<User[]>(this.url + "/" + "listUsers");
@@ -30,6 +29,7 @@ export class UserService {
   }
 
   public createUser(user: User) {
+    this.router.navigate(['user']);
     return this.http.post<User>(this.url + "/" + "addUser", user);
   }
 
