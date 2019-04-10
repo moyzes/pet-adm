@@ -33,5 +33,9 @@ export class BreedComponent implements OnInit{
 		  this.breeds = this.breeds.filter(u => u !== breed);
 		})
 	};
-
+	editBreed(breed: Breed): void {
+    localStorage.removeItem("editBreedId");
+    localStorage.setItem("editBreedId", breed.id+"");
+    this.router.navigate(['editbreed']);
+  };
 }

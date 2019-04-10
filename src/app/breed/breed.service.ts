@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import {Router} from "@angular/router";
 import { Breed } from './breed.model';
 
 
@@ -11,13 +11,13 @@ const httpOptions = {
 @Injectable()
 export class BreedService {
 
-  constructor(private http:HttpClient) {}
+  constructor(private router: Router, private http:HttpClient) {}
 
   // private url = 'https://procura-pet.herokuapp.com/';
   private url = '/api'; 
   
-  public getBreed(breed: { id: string; }) {
-    return this.http.get<Breed[]>(this.url + "/" + "getBreed" + "/" + breed.id);
+  public getBreed(id: number) {
+    return this.http.get<Breed[]>(this.url + "/" + "getBreed" + "/" + id);
   }
 
   public getBreeds() {
@@ -29,10 +29,12 @@ export class BreedService {
   }
 
   public createBreed(breed: Breed) {
+    this.router.navigate(['breed']);
     return this.http.post<Breed>(this.url + "/" + "addBreed", breed);
   }
 
   public updateBreed(breed: Breed) {
+    this.router.navigate(['breed']);
     return this.http.put<Breed>(this.url + "/" + "updateBreed" + "/" + breed.id, breed);
   }
 

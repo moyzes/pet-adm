@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { Router } from "@angular/router";
 import { AttributeType } from './attributetype.model';
 
 
@@ -11,13 +11,13 @@ const httpOptions = {
 @Injectable()
 export class AttributeTypeService {
 
-  constructor(private http:HttpClient) {}
+  constructor(private router: Router, private http:HttpClient) {}
 
   // private url = 'https://procura-pet.herokuapp.com/';
   private url = '/api'; 
   
-  public getAttributeType(attributetype: { id: string; }) {
-    return this.http.get<AttributeType[]>(this.url + "/" + "getAtributeType" + "/" + attributetype.id);
+  public getAttributeType( id: number ) {
+    return this.http.get<AttributeType[]>(this.url + "/" + "getAttributeType" + "/" + id);
   }
 
   public getAttributeTypes() {
@@ -29,6 +29,7 @@ export class AttributeTypeService {
   }
 
   public createAttributeType(attributetype: AttributeType) {
+    this.router.navigate(['user']);
     return this.http.post<AttributeType>(this.url + "/" + "addAttributeType", attributetype);
   }
 

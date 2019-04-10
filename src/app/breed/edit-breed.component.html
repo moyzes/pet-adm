@@ -1,53 +1,53 @@
-<form>
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
         <mat-card class="shipping-card">
                 <mat-card-header>
-                        <mat-card-title>Cadastro de raças</mat-card-title>
+                        <mat-card-title>Edição de espécies</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                         <div class="row">
                                 <div class="col">
                                         <mat-form-field class="full-width">
-                                                <input [(ngModel)]="breed.name" matInput placeholder="Nome" name="name">
+                                                <input formControlName="name" id="name" matInput placeholder="Nome"
+                                                        name="name">
                                         </mat-form-field>
                                 </div>
                         </div>
                         <div class="row">
                                 <div class="col">
                                         <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.origin" matInput placeholder="Origem"
-                                                        name="origin"></textarea>
+                                                <textarea formControlName="origin" id="origin" matInput
+                                                        placeholder="Origem" name="origin"></textarea>
                                         </mat-form-field>
                                 </div>
                         </div>
                         <div class="row">
                                 <div class="col">
                                         <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.slogan" matInput placeholder="Slogan"
-                                                        name="slogan"></textarea>
+                                                <textarea formControlName="slogan" id="slogan" matInput
+                                                        placeholder="Slogan" name="slogan"></textarea>
                                         </mat-form-field>
                                 </div>
                         </div>
                         <div class="row">
                                 <div class="col">
                                         <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.summary" matInput placeholder="Resumo"
-                                                        name="summary"></textarea>
+                                                <textarea formControlName="summary" id="summary" matInput
+                                                        placeholder="Resumo" name="summary"></textarea>
                                         </mat-form-field>
                                 </div>
                         </div>
                         <div class="row">
                                 <div class="col">
                                         <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.information" matInput
-                                                        placeholder="Informações" name="information">
-                                        </textarea>
+                                                <textarea formControlName="information" id="information" matInput
+                                                        placeholder="Informações" name="information"></textarea>
                                         </mat-form-field>
                                 </div>
                         </div>
                         <div class="row">
                                 <div class="col">
                                         <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.look" matInput placeholder="Aparência"
+                                                <textarea formControlName="look" id="look" matInput placeholder="Aparência"
                                                         name="look"></textarea>
                                         </mat-form-field>
                                 </div>
@@ -55,7 +55,7 @@
                         <div class="row">
                                 <div class="col">
                                         <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.care" matInput
+                                                <textarea formControlName="care" id="care" matInput
                                                         placeholder="Cuidados e bem estar" name="care"></textarea>
                                         </mat-form-field>
                                 </div>
@@ -63,14 +63,14 @@
                         <div class="row">
                                 <div class="col">
                                         <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.curiosity" matInput
-                                                        placeholder="Curiosidades" name="curiosity"></textarea>
+                                                <textarea formControlName="curiosity" id="curiosity" matInput
+                                                        placeholder="Curiosidades" name="curio"></textarea>
                                         </mat-form-field>
                                 </div>
                         </div>
                 </mat-card-content>
                 <mat-card-actions>
-                        <button mat-raised-button color="primary" (click)="createBreed()">Salvar</button>
+                        <button mat-raised-button color="primary">Salvar</button>
                 </mat-card-actions>
         </mat-card>
 </form>

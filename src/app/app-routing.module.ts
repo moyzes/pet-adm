@@ -11,9 +11,11 @@ import { EditSpecieComponent } from './specie/edit-specie.component';
 
 import { AttributeTypeComponent } from './attributetype/attributetype.component';
 import { AddAttributeTypeComponent } from './attributetype/add-attributetype.component';
+import { EditAttributeTypeComponent } from './attributetype/edit-attributetype.component';
 
 import { BreedComponent } from './breed/breed.component';
 import { AddBreedComponent } from './breed/add-breed.component';
+import { EditBreedComponent } from './breed/edit-breed.component';
 
 
 const routes: Routes = [
@@ -24,8 +26,10 @@ const routes: Routes = [
 	{path: 'addspecie', component: AddSpecieComponent},
 	{path: 'editspecie', component: EditSpecieComponent},
 	{path: 'attributetype', component: AttributeTypeComponent},
+	{path: 'editattributetype', component: EditAttributeTypeComponent},
 	{path: 'addattributetype', component: AddAttributeTypeComponent},
 	{path: 'breed', component: BreedComponent},
+	{path: 'editbreed', component: EditBreedComponent},
 	{path: 'addbreed', component: AddBreedComponent}
 ];
 

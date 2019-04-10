@@ -34,6 +34,7 @@ export class SpecieService {
   }
 
   public updateSpecie(specie: Specie) {
+    this.router.navigate(['user']);
     return this.http.put<Specie>(this.url + "/" + "updateSpecie" + "/" + specie.id, specie);
   }
 

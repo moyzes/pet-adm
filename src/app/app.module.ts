@@ -23,11 +23,13 @@ import { SpecieService } from './specie/specie.service';
 
 import { AttributeTypeComponent } from './attributetype/attributetype.component';
 import { AddAttributeTypeComponent } from './attributetype/add-attributetype.component';
+import { EditAttributeTypeComponent } from './attributetype/edit-attributetype.component';
 import { AttributeTypeService } from './attributetype/attributetype.service';
 
 import { BreedComponent } from './breed/breed.component';
 import { BreedService } from './breed/breed.service';
 import { AddBreedComponent } from './breed/add-breed.component';
+import { EditBreedComponent } from './breed/edit-breed.component';
 
 @NgModule({
 	declarations: [
@@ -40,8 +42,10 @@ import { AddBreedComponent } from './breed/add-breed.component';
 		SpecieComponent,
 		EditSpecieComponent,
 		AddAttributeTypeComponent,
+		EditAttributeTypeComponent,
 		AttributeTypeComponent,
 		AddBreedComponent,
+		EditBreedComponent,
 		BreedComponent
 	],
 	imports: [

@@ -1,6 +1,6 @@
-<h2> Tipos de atributo </h2>
+<h2> Tipos de características </h2>
 
-<button mat-raised-button color="primary" routerLink="/addattributetype">Novo tipo de atributo</button>
+<button mat-raised-button color="primary" routerLink="/addattributetype">Novo</button>
 <p></p>
 <mat-table [dataSource]="attributetypes">
 
@@ -12,6 +12,7 @@
 	<ng-container matColumnDef="action">
 		<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
 		<mat-cell *matCellDef="let attributetype">
+			<button mat-raised-button color="primary" (click)="editAttributeType(attributetype)">Editar</button>&nbsp;
 			<button mat-raised-button color="primary" (click)="deleteAttributeType(attributetype)">Apagar</button>
 		</mat-cell>
 	</ng-container>

@@ -34,4 +34,10 @@ export class AttributeTypeComponent implements OnInit{
 		})
 	};
 
+	editAttributeType(attributetype: AttributeType): void {
+    localStorage.removeItem("editAttributeTypeId");
+    localStorage.setItem("editAttributeTypeId", attributetype.id+"");
+    this.router.navigate(['editattributetype']);
+  };
+
 }
