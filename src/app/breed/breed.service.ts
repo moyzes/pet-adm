@@ -25,6 +25,7 @@ export class BreedService {
   }
 
   public deleteBreed(breed: Breed) {
+    this.router.navigate(['breed']);
     return this.http.delete(this.url + "/"+ "deleteBreed" + "/" + breed.id);
   }
 

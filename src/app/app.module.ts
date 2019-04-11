@@ -31,19 +31,32 @@ import { BreedService } from './breed/breed.service';
 import { AddBreedComponent } from './breed/add-breed.component';
 import { EditBreedComponent } from './breed/edit-breed.component';
 
+import { AttributeComponent } from './attribute/attribute.component';
+import { AddAttributeComponent } from './attribute/add-attribute.component';
+import { EditAttributeComponent } from './attribute/edit-attribute.component';
+import { AttributeService } from './attribute/attribute.service';
+
 @NgModule({
 	declarations: [
 		AppComponent,
 		MenuComponent,
+		
 		UserComponent,
 		AddUserComponent,
 		EditUserComponent,
+		
 		AddSpecieComponent,
 		SpecieComponent,
 		EditSpecieComponent,
+
 		AddAttributeTypeComponent,
 		EditAttributeTypeComponent,
 		AttributeTypeComponent,
+		
+		AddAttributeComponent,
+		EditAttributeComponent,
+		AttributeComponent,
+
 		AddBreedComponent,
 		EditBreedComponent,
 		BreedComponent
@@ -67,7 +80,7 @@ import { EditBreedComponent } from './breed/edit-breed.component';
 		ReactiveFormsModule,
 		MatTableModule
 	],
-	providers: [UserService,SpecieService,AttributeTypeService,BreedService],
+	providers: [UserService,SpecieService,AttributeTypeService,BreedService,AttributeService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

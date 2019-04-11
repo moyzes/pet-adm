@@ -25,6 +25,7 @@ export class UserService {
   }
 
   public deleteUser(user: User) {
+    this.router.navigate(['user']);
     return this.http.delete(this.url + "/"+ "deleteUser" + "/" + user.id);
   }
 
@@ -34,6 +35,7 @@ export class UserService {
   }
 
   public updateUser(user: User) {
+    this.router.navigate(['user']);
     return this.http.put<User>(this.url + "/" + "updateUser" + "/" + user.id, user);
   }
 

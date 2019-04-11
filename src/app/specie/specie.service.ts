@@ -24,6 +24,7 @@ export class SpecieService {
   }
 
   public deleteSpecie(specie: Specie) {
+    this.router.navigate(['specie']);
     return this.http.delete(this.url + "/"+ "deleteSpecie" + "/" + specie.id);
   }
 
@@ -34,7 +35,7 @@ export class SpecieService {
   }
 
   public updateSpecie(specie: Specie) {
-    this.router.navigate(['user']);
+    this.router.navigate(['specie']);
     return this.http.put<Specie>(this.url + "/" + "updateSpecie" + "/" + specie.id, specie);
   }
 

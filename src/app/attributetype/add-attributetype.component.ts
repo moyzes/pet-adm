@@ -19,7 +19,7 @@ export class AddAttributeTypeComponent {
   createAttributeType(): void {
     this.attributetypeservice.createAttributeType(this.attributetype)
         .subscribe( data => {
-          alert("Tipo de atributo salvo com sucesso!");
+          alert("Tipo de característica salva com sucesso!");
         });
 
   };

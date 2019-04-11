@@ -25,15 +25,17 @@ export class AttributeTypeService {
   }
 
   public deleteAttributeType(attributetype: AttributeType) {
+    this.router.navigate(['attributetype']);
     return this.http.delete(this.url + "/"+ "deleteAttributeType" + "/" + attributetype.id);
   }
 
   public createAttributeType(attributetype: AttributeType) {
-    this.router.navigate(['user']);
+    this.router.navigate(['attributetype']);
     return this.http.post<AttributeType>(this.url + "/" + "addAttributeType", attributetype);
   }
 
   public updateAttributeType(attributetype: AttributeType) {
+    this.router.navigate(['attributetype']);
     return this.http.put<AttributeType>(this.url + "/" + "updateAttributeType" + "/" + attributetype.id, attributetype);
   }
 
