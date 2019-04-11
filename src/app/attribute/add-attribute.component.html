@@ -12,8 +12,18 @@
                                 </div>
                         </div>             
                 </mat-card-content>
-                <mat-card-actions>
+                 
+                <mat-label>Tipo de característica</mat-label>
+                <mat-select>
+                        <mat-option *ngFor="let attributetype of attributetypes" [value]="attributetype.id">
+                        {{attributetype.name}}
+                        </mat-option>
+                </mat-select>
+                    
+
+                      <mat-card-actions>
                         <button mat-raised-button color="primary" (click)="createAttribute()">Salvar</button>
                 </mat-card-actions>
+
         </mat-card>
 </form>

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { Attribute } from './attribute.model';
 import { AttributeService } from './attribute.service';
+import { AttributeTypeService } from '../attributetype/attributetype.service';
+import { AttributeType } from '../attributetype/attributetype.model';
 
 @Component({
   templateUrl: './add-attribute.component.html',
@@ -12,7 +14,15 @@ export class AddAttributeComponent {
 
   attribute: Attribute = new Attribute();
 
-  constructor(private router: Router, private attributeservice: AttributeService) {
+  attributetypes: AttributeType[];
+
+
+
+  constructor(private router: Router, private attributeservice: AttributeService, private attributetypeservice: AttributeTypeService) {
+
+    this.attributetypeservice.getAttributeTypes().subscribe( data => {
+      this.attributetypes = data;
+    });
 
   }
 
