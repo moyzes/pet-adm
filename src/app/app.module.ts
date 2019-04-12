@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule } from '@angular/material';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material';
 
@@ -35,6 +36,7 @@ import { AttributeComponent } from './attribute/attribute.component';
 import { AddAttributeComponent } from './attribute/add-attribute.component';
 import { EditAttributeComponent } from './attribute/edit-attribute.component';
 import { AttributeService } from './attribute/attribute.service';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 @NgModule({
 	declarations: [
@@ -59,7 +61,8 @@ import { AttributeService } from './attribute/attribute.service';
 
 		AddBreedComponent,
 		EditBreedComponent,
-		BreedComponent
+		BreedComponent,
+		ConfirmComponent
 	],
 	imports: [
 		BrowserModule,
@@ -78,9 +81,18 @@ import { AttributeService } from './attribute/attribute.service';
 		MatRadioModule,
 		MatCardModule,
 		ReactiveFormsModule,
-		MatTableModule
+		MatTableModule,
+		MatDialogModule
 	],
-	providers: [UserService,SpecieService,AttributeTypeService,BreedService,AttributeService],
+	providers: [
+		UserService,
+		SpecieService,
+		AttributeTypeService,
+		BreedService,
+		AttributeService,
+		{provide: MatDialogRef, useValue: {}}
+	],
+	entryComponents: [ConfirmComponent],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

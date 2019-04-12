@@ -1,7 +1,9 @@
-<h2> Usuários </h2>
+<h2>Usuários</h2>
 
-<button mat-raised-button color="primary" routerLink="/adduser">Novo usuário</button>
-<p></p>
+<button mat-fab color="primary" routerLink="/adduser" id="add">
+	<mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+</button>
+
 <mat-table [dataSource]="users">
 
 	<ng-container matColumnDef="name">
@@ -17,8 +19,12 @@
 	<ng-container matColumnDef="action">
 			<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
 			<mat-cell *matCellDef="let user">
-				<button mat-raised-button color="primary" (click)="editUser(user)">Editar</button>&nbsp;
-				<button mat-raised-button color="primary" (click)="deleteUser(user)">Apagar</button>
+				<button mat-raised-button color="primary" (click)="editUser(user)">
+					<mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+				</button>
+				<button mat-raised-button color="accent" (click)="deleteUser(user)">
+					<mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+				</button>
 			</mat-cell>
 		</ng-container>
 

@@ -5,23 +5,20 @@ import { User } from './user.model';
 import { UserService } from './user.service';
 
 @Component({
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./user.component.css']
+	templateUrl: './add-user.component.html',
+	styleUrls: ['./user.component.css']
 })
 export class AddUserComponent {
 
-  user: User = new User();
+	user: User = new User();
 
-  constructor(private router: Router, private userService: UserService) {
+	constructor(private router: Router, private userService: UserService) {
+	}
 
-  }
-
-  createUser(): void {
-    this.userService.createUser(this.user)
-        .subscribe( data => {
-          alert("Usuário salvo com sucesso!");
-        });
-
-  };
+	createUser(): void {
+		this.userService.createUser(this.user).subscribe(data => {
+			alert("Usuário salvo com sucesso!");
+		});
+	};
 
 }
