@@ -3,25 +3,37 @@
                 <mat-card-header>
                         <mat-card-title>Cadastro de características</mat-card-title>
                 </mat-card-header>
+
+                <mat-card-content>
+
+                        <div class="row">
+                                <div class="col">
+
+                                        <mat-form-field class="full-width">
+                                                <mat-select matInput placeholder="Tipo de característica">
+                                                        <mat-option *ngFor="let attributetype of attributetypes"
+                                                                [value]="attributetype">
+                                                                {{attributetype.name}}
+                                                        </mat-option>
+                                                </mat-select>
+                                        </mat-form-field>
+                                </div>
+                        </div>
+                </mat-card-content>
+
                 <mat-card-content>
                         <div class="row">
                                 <div class="col">
                                         <mat-form-field class="full-width">
-                                                <input [(ngModel)]="attribute.name" matInput placeholder="Nome" name="name">
+                                                <input [(ngModel)]="attribute.name" matInput placeholder="Nome"
+                                                        name="name">
                                         </mat-form-field>
                                 </div>
-                        </div>             
+                        </div>
                 </mat-card-content>
-                 
-                <mat-label>Tipo de característica</mat-label>
-                <mat-select>
-                        <mat-option *ngFor="let attributetype of attributetypes" [value]="attributetype.id">
-                        {{attributetype.name}}
-                        </mat-option>
-                </mat-select>
-                    
 
-                      <mat-card-actions>
+
+                <mat-card-actions>
                         <button mat-raised-button color="primary" (click)="createAttribute()">Salvar</button>
                 </mat-card-actions>
 

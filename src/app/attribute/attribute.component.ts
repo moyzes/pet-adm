@@ -13,7 +13,7 @@ import { DataSource } from '@angular/cdk/collections';
 export class AttributeComponent implements OnInit{
 	
 	attributes: Attribute[];
-	displayedColumns = ['name','action'];
+	displayedColumns = ['name','attributetype','action'];
 
 	constructor(private router: Router, private attributeservice: AttributeService) {
   

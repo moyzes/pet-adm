@@ -9,6 +9,11 @@
 		<mat-cell *matCellDef="let attribute"> {{attribute.name}} </mat-cell>
 	</ng-container>
 
+	<ng-container matColumnDef="attributetype">
+			<mat-header-cell *matHeaderCellDef> Tipo </mat-header-cell>
+			<mat-cell *matCellDef="let attribute"> {{attribute.attributetype.name}} </mat-cell>
+		</ng-container>
+
 	<ng-container matColumnDef="action">
 		<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
 		<mat-cell *matCellDef="let attribute">
