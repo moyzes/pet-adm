@@ -15,29 +15,29 @@ export class AttributeComponent implements OnInit{
 	attributes: Attribute[];
 	displayedColumns = ['name','attributetype','action'];
 
-	constructor(private router: Router, private attributeservice: AttributeService) {
-  
+	constructor(
+		private router: Router,
+		private attributeservice: AttributeService) {
 	}
-  
+	
 	ngOnInit() {
-	  this.attributeservice.getAttributes()
-		.subscribe( data => {
-		  this.attributes = data;
+		this.attributeservice.getAttributes().subscribe(data => {
+			this.attributes = data;
+			console.log(this.attributes)
 		});
 	};
 
 	
 	deleteAttribute(attribute: Attribute): void {
-	  this.attributeservice.deleteAttribute(attribute)
-		.subscribe( data => {
-		  this.attributes = this.attributes.filter(u => u !== attribute);
+		this.attributeservice.deleteAttribute(attribute).subscribe(data => {
+			this.attributes = this.attributes.filter(u => u !== attribute);
 		})
 	};
 
 	editAttribute(attribute: Attribute): void {
-    localStorage.removeItem("editAttributeId");
-    localStorage.setItem("editAttributeId", attribute.id+"");
-    this.router.navigate(['editattribute']);
-  };
+		localStorage.removeItem("editAttributeId");
+		localStorage.setItem("editAttributeId", attribute.id+"");
+		this.router.navigate(['editattribute']);
+	};
 
 }

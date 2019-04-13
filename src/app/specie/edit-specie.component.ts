@@ -6,46 +6,49 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {first} from "rxjs/operators";
 
 @Component({
-  selector: 'app-edit-specie',
-  templateUrl: './edit-specie.component.html',
-  styleUrls: ['./specie.component.css']
+	selector: 'app-edit-specie',
+	templateUrl: './edit-specie.component.html',
+	styleUrls: ['./specie.component.css']
 })
 export class EditSpecieComponent implements OnInit {
 
-  specie: Specie;
-  editForm: FormGroup;
+	specie: Specie;
+	editForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private specieService: SpecieService) { 
+	constructor(
+		private formBuilder: FormBuilder,
+		private router: Router,
+		private specieService: SpecieService) { 
 
-  }
+	}
 
-  ngOnInit() {
+	ngOnInit() {
 
-    let specieId = localStorage.getItem("editSpecieId");
+		let specieId = localStorage.getItem("editSpecieId");
 
-    if(!specieId) {
-      alert("Ação inválida.")
-      this.router.navigate(['specie']);
-      return;
-    }
-    
-    this.editForm = this.formBuilder.group({id:[],name:[]});
-    
-    this.specieService.getSpecie(+specieId).subscribe( data => {
-        this.editForm.setValue(data);
-      });
-  }
+		if(!specieId) {
+			alert("Ação inválida.")
+			this.router.navigate(['specie']);
+			return;
+		}
+		
+		this.editForm = this.formBuilder.group({id:[], name:[], breeds:[]});
+		
+		this.specieService.getSpecie(+specieId).subscribe(data => {
+			console.log(data)
+			this.editForm.setValue(data);
+		});
+	}
 
-  onSubmit() {
-    this.specieService.updateSpecie(this.editForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate(['specie']);
-        },
-        error => {
-          alert(error);
-        });
-  }
-
+	onSubmit() {
+		this.specieService.updateSpecie(this.editForm.value)
+			.pipe(first())
+			.subscribe(data => {
+				this.router.navigate(['specie']);
+			},
+			error => {
+				alert(error);
+			}
+		);
+	}
 }

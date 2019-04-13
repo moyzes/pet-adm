@@ -14,14 +14,15 @@ export class SpecieComponent implements OnInit{
 	species: Specie[];
 	displayedColumns = ['name','action'];
 
-	constructor(private router: Router, private specieService: SpecieService) {
-  
+	constructor(
+		private router: Router, 
+		private specieService: SpecieService) {
+	
 	}
-  
+	
 	ngOnInit() {
-	  this.specieService.getSpecies()
-		.subscribe( data => {
-		  this.species = data;
+		this.specieService.getSpecies().subscribe(data => {
+			this.species = data;
 		});
 	};
 
@@ -30,16 +31,16 @@ export class SpecieComponent implements OnInit{
 
 		if(confirm("Confirma a exclusão?")){
 			this.specieService.deleteSpecie(specie)
-			.subscribe( data => {
+			.subscribe(data => {
 				this.species = this.species.filter(u => u !== specie);
 			})
 		}
 	};
 
 	editSpecie(specie: Specie): void {
-    localStorage.removeItem("editSpecieId");
-    localStorage.setItem("editSpecieId", specie.id+"");
-    this.router.navigate(['editspecie']);
-  };
+		localStorage.removeItem("editSpecieId");
+		localStorage.setItem("editSpecieId", specie.id+"");
+		this.router.navigate(['editspecie']);
+	};
 
 }

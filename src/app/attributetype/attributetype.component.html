@@ -1,23 +1,33 @@
-<h2> Tipos de características </h2>
+<mat-card class="shipping-card">
+	<mat-card-header>
+		<mat-card-title>Tipos de características</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-table [dataSource]="attributetypes">
 
-<button mat-raised-button color="primary" routerLink="/addattributetype">Novo</button>
-<p></p>
-<mat-table [dataSource]="attributetypes">
+			<ng-container matColumnDef="name">
+				<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+				<mat-cell *matCellDef="let attributetype">
+					<a (click)="editAttributeType(attributetype)" class="mat-row-link">{{attributetype.name}}</a>
+				</mat-cell>
+			</ng-container>
+		
+			<ng-container matColumnDef="action">
+				<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+				<mat-cell *matCellDef="let attributetype">
+					<button mat-stroked-button color="accent" (click)="deleteAttributeType(attributetype)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</mat-cell>
+			</ng-container>
+		
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		
+		</mat-table>
+	</mat-card-content>
+</mat-card>
 
-	<ng-container matColumnDef="name">
-		<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-		<mat-cell *matCellDef="let attributetype"> {{attributetype.name}} </mat-cell>
-	</ng-container>
-
-	<ng-container matColumnDef="action">
-		<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
-		<mat-cell *matCellDef="let attributetype">
-			<button mat-raised-button color="primary" (click)="editAttributeType(attributetype)">Editar</button>&nbsp;
-			<button mat-raised-button color="primary" (click)="deleteAttributeType(attributetype)">Apagar</button>
-		</mat-cell>
-	</ng-container>
-
-	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-</mat-table>
+<button mat-fab color="primary" routerLink="/addattributetype" id="add">
+	<mat-icon>add</mat-icon>
+</button>

@@ -1,20 +1,36 @@
 <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-        <mat-card class="shipping-card">
-                <mat-card-header>
-                        <mat-card-title>Edição de tipos de características</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                        <div class="row">
-                                <div class="col">
-                                        <mat-form-field class="full-width">
-                                                <input formControlName="name" id="name" matInput placeholder="Nome"
-                                                        name="name">
-                                        </mat-form-field>
-                                </div>
-                        </div>
-                </mat-card-content>
-                <mat-card-actions>
-                        <button mat-raised-button color="primary">Salvar</button>
-                </mat-card-actions>
-        </mat-card>
+	<mat-card class="shipping-card">
+		<mat-card-header>
+			<mat-card-title>Edição de tipos de características</mat-card-title>
+		</mat-card-header>
+
+		<mat-card-content>
+			<div class="row">
+				<div class="col">
+					<mat-form-field>
+						<mat-select 
+							formControlName="attributetype" name="attributetype">
+							<mat-option *ngFor="let attributetype of attributetypes"
+								[value]="attributetype.id">{{attributetype.name}}</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<input formControlName="name" 
+							id="name" 
+							matInput placeholder="Nome"
+							name="name">
+					</mat-form-field>
+				</div>
+			</div>
+		</mat-card-content>
+
+		<mat-card-actions>
+			<button mat-raised-button color="primary">Salvar</button>
+		</mat-card-actions>
+	</mat-card>
 </form>

@@ -7,31 +7,32 @@ import { AttributeTypeService } from '../attributetype/attributetype.service';
 import { AttributeType } from '../attributetype/attributetype.model';
 
 @Component({
-  templateUrl: './add-attribute.component.html',
-  styleUrls: ['./attribute.component.css']
+	templateUrl: './add-attribute.component.html',
+	styleUrls: ['./attribute.component.css']
 })
 export class AddAttributeComponent {
 
-  attribute: Attribute = new Attribute();
+	attribute: Attribute = new Attribute();
+	attributetypes: AttributeType[];
+	selectedAttributeType: AttributeType;
 
-  attributetypes: AttributeType[];
+	constructor(
+		private router: Router,
+		private attributeservice: AttributeService,
+		private attributetypeservice: AttributeTypeService) {
 
+		this.attributetypeservice.getAttributeTypes().subscribe(data => {
+			this.attributetypes = data;
+		});
+	}
 
+	createAttribute(): void {
+		this.attribute.attributetype = this.selectedAttributeType;
+		console.log(this.attribute.attributetype)
 
-  constructor(private router: Router, private attributeservice: AttributeService, private attributetypeservice: AttributeTypeService) {
-
-    this.attributetypeservice.getAttributeTypes().subscribe( data => {
-      this.attributetypes = data;
-    });
-
-  }
-
-  createAttribute(): void {
-    this.attributeservice.createAttribute(this.attribute)
-        .subscribe( data => {
-          alert("Característica salva com sucesso!");
-        });
-
-  };
-
+		this.attributeservice.createAttribute(this.attribute).subscribe(data => {
+			alert("Característica salva com sucesso!");
+		});
+		
+	};
 }

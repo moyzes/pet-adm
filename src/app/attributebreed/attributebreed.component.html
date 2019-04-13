@@ -1,0 +1,28 @@
+<mat-card class="shipping-card">
+	<mat-card-header>
+		<mat-card-title>Características</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-nav-list>
+			<mat-list-item *ngFor="let attrib of attributes">
+				<a matLine href="javascript:void(0)">{{attrib.name}}</a>
+				<button mat-icon-button (click)="addToBreed(attrib)">
+					<mat-icon>add</mat-icon>
+				</button>
+			</mat-list-item>
+		</mat-nav-list>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-raised-button color="primary" (click)="confirm()">Ok</button>
+		<button mat-raised-button type="button" (click)="cancel()">Cancelar</button>
+	</mat-card-actions>
+</mat-card>
+
+
+
+
+
+
+
+
+

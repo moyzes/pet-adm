@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { User } from './user.model';
 import { UserService } from './user.service';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { first } from "rxjs/operators";
 
 @Component({
@@ -53,7 +53,7 @@ export class EditUserComponent implements OnInit {
 	onSubmit() {
 		this.userService.updateUser(this.editForm.value)
 			.pipe(first())
-			.subscribe(data => {
+			.subscribe(() => {
 				this.router.navigate(['user']);
 			},
 			error => {

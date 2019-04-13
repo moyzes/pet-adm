@@ -13,7 +13,7 @@ export class UserService {
 	constructor(private router: Router, private http:HttpClient) {}
 
 	//private userUrl = 'https://procura-pet.herokuapp.com/';
-	private url = 'http://localhost:8080/api'; 
+	private url = '/api';
 	
 	public getUser(id: number) {
 		return this.http.get<User[]>(this.url + "/" + "getUser" + "/" + id);

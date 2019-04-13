@@ -11,9 +11,34 @@ body {
 }
 
 #add {
-	width: 8%;
-	height: 8%;
+	width: 75px;
+	height: 75px;
 	position: absolute;
 	bottom: 50px;
 	right: 50px;
+}
+
+mat-card {
+	margin: 10px!important;
+}
+
+mat-card-header {
+	background-color: #f2f2f2;
+	margin: -16px!important;
+	margin-bottom: 30px!important;
+	padding: 18px;
+}
+
+mat-card-header mat-card-title {
+	margin: 0px!important;
+	font-size: 1.5em;
+	font-weight: bold!important;
+}
+
+mat-row {
+	cursor: pointer;
+}
+
+mat-row:hover {
+	background-color: #f2f2f2;
 }

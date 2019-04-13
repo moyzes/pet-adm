@@ -1,41 +1,48 @@
-<h2> Raças </h2>
+<mat-card class="shipping-card">
+	<mat-card-header>
+		<mat-card-title>Raças</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-table [dataSource]="breeds">
 
-<button mat-raised-button color="primary" routerLink="/addbreed">Nova raça</button>
-<p></p>
-<mat-table [dataSource]="breeds">
+			<ng-container matColumnDef="name">
+				<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+				<mat-cell *matCellDef="let breed">
+					<a (click)="editBreed(breed)" class="mat-row-link">{{breed.name}}</a>
+				</mat-cell>
+			</ng-container>
 
-	<ng-container matColumnDef="name">
-		<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-		<mat-cell *matCellDef="let breed"> {{breed.name}} </mat-cell>
-	</ng-container>
+			<ng-container matColumnDef="specie">
+					<mat-header-cell *matHeaderCellDef> Espécie </mat-header-cell>
+					<mat-cell *matCellDef="let breed"> {{breed.specie.name}} </mat-cell>
+			</ng-container>
 
-	<ng-container matColumnDef="origin">
-		<mat-header-cell *matHeaderCellDef> Origem </mat-header-cell>
-		<mat-cell *matCellDef="let breed"> {{breed.origin}} </mat-cell>
-	</ng-container>
+			<ng-container matColumnDef="origin">
+				<mat-header-cell *matHeaderCellDef> Origem </mat-header-cell>
+				<mat-cell *matCellDef="let breed"> {{breed.origin}} </mat-cell>
+			</ng-container>
+		
+			<ng-container matColumnDef="slogan">
+				<mat-header-cell *matHeaderCellDef> Slogan </mat-header-cell>
+				<mat-cell *matCellDef="let breed"> {{breed.slogan}} </mat-cell>
+			</ng-container>
+		
+			<ng-container matColumnDef="action">
+				<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+				<mat-cell *matCellDef="let breed">
+					<button mat-stroked-button color="accent" (click)="deleteBreed(breed)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</mat-cell>
+			</ng-container>
+		
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		
+		</mat-table>
+	</mat-card-content>
+</mat-card>
 
-	<ng-container matColumnDef="slogan">
-		<mat-header-cell *matHeaderCellDef> Slogan </mat-header-cell>
-		<mat-cell *matCellDef="let breed"> {{breed.slogan}} </mat-cell>
-	</ng-container>
-
-	<ng-container matColumnDef="action">
-		<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
-		<mat-cell *matCellDef="let breed"> 			
-				<button mat-raised-button color="primary" (click)="editBreed(breed)">Editar</button>&nbsp;
-				<button mat-raised-button color="primary" (click)="deleteBreed(breed)">Apagar</button> 
-		</mat-cell>
-	</ng-container>
-
-	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-</mat-table>
-<!--
-maxheight: number;
-maxlifetime: number;
-maxweight: number;
-minheight: number;
-minlifetime: number;
-minweight: number;
--->
+<button mat-fab color="primary" routerLink="/addbreed" id="add">
+	<mat-icon>add</mat-icon>
+</button>

@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule } from '@angular/material';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatChipsModule } from '@angular/material/chips';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material';
 
@@ -37,6 +38,8 @@ import { AddAttributeComponent } from './attribute/add-attribute.component';
 import { EditAttributeComponent } from './attribute/edit-attribute.component';
 import { AttributeService } from './attribute/attribute.service';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { AttributebreedComponent } from './attributebreed/attributebreed.component';
+import { AttributeBreedService } from './attributebreed/attributebreed.service';
 
 @NgModule({
 	declarations: [
@@ -62,7 +65,8 @@ import { ConfirmComponent } from './confirm/confirm.component';
 		AddBreedComponent,
 		EditBreedComponent,
 		BreedComponent,
-		ConfirmComponent
+		ConfirmComponent,
+		AttributebreedComponent
 	],
 	imports: [
 		BrowserModule,
@@ -82,7 +86,8 @@ import { ConfirmComponent } from './confirm/confirm.component';
 		MatCardModule,
 		ReactiveFormsModule,
 		MatTableModule,
-		MatDialogModule
+		MatDialogModule,
+		MatChipsModule
 	],
 	providers: [
 		UserService,
@@ -90,9 +95,10 @@ import { ConfirmComponent } from './confirm/confirm.component';
 		AttributeTypeService,
 		BreedService,
 		AttributeService,
+		AttributeBreedService,
 		{provide: MatDialogRef, useValue: {}}
 	],
-	entryComponents: [ConfirmComponent],
+	entryComponents: [ConfirmComponent, AttributebreedComponent],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

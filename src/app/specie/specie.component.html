@@ -1,23 +1,34 @@
-<h2> Espécies </h2>
+<mat-card class="shipping-card">
+	<mat-card-header>
+		<mat-card-title>Espécies</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
 
-<button mat-raised-button color="primary" routerLink="/addspecie">Nova</button>
-<p></p>
-<mat-table [dataSource]="species">
+		<mat-table [dataSource]="species">
 
-	<ng-container matColumnDef="name">
-		<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-		<mat-cell *matCellDef="let specie"> {{specie.name}} </mat-cell>
-	</ng-container>
+			<ng-container matColumnDef="name">
+				<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+				<mat-cell *matCellDef="let specie">
+					<a (click)="editSpecie(specie)" class="mat-row-link">{{specie.name}}</a>
+				</mat-cell>
+			</ng-container>
 
-	<ng-container matColumnDef="action">
-		<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
-		<mat-cell *matCellDef="let specie">
-			<button mat-raised-button color="primary" (click)="editSpecie(specie)">Editar</button>&nbsp;
-			<button mat-raised-button color="primary" (click)="deleteSpecie(specie)">Apagar</button>
-		</mat-cell>
-	</ng-container>
+			<ng-container matColumnDef="action">
+				<mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+				<mat-cell *matCellDef="let specie">
+					<button mat-stroked-button color="accent" (click)="deleteSpecie(specie)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</mat-cell>
+			</ng-container>
 
-	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-</mat-table>
+		</mat-table>
+	</mat-card-content>
+</mat-card>
+
+<button mat-fab color="primary" routerLink="/addspecie" id="add">
+	<mat-icon>add</mat-icon>
+</button>

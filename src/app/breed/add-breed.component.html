@@ -1,76 +1,105 @@
-<form>
-        <mat-card class="shipping-card">
-                <mat-card-header>
-                        <mat-card-title>Cadastro de raças</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                        <div class="row">
-                                <div class="col">
-                                        <mat-form-field class="full-width">
-                                                <input [(ngModel)]="breed.name" matInput placeholder="Nome" name="name">
-                                        </mat-form-field>
-                                </div>
-                        </div>
-                        <div class="row">
-                                <div class="col">
-                                        <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.origin" matInput placeholder="Origem"
-                                                        name="origin"></textarea>
-                                        </mat-form-field>
-                                </div>
-                        </div>
-                        <div class="row">
-                                <div class="col">
-                                        <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.slogan" matInput placeholder="Slogan"
-                                                        name="slogan"></textarea>
-                                        </mat-form-field>
-                                </div>
-                        </div>
-                        <div class="row">
-                                <div class="col">
-                                        <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.summary" matInput placeholder="Resumo"
-                                                        name="summary"></textarea>
-                                        </mat-form-field>
-                                </div>
-                        </div>
-                        <div class="row">
-                                <div class="col">
-                                        <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.information" matInput
-                                                        placeholder="Informações" name="information">
-                                        </textarea>
-                                        </mat-form-field>
-                                </div>
-                        </div>
-                        <div class="row">
-                                <div class="col">
-                                        <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.look" matInput placeholder="Aparência"
-                                                        name="look"></textarea>
-                                        </mat-form-field>
-                                </div>
-                        </div>
-                        <div class="row">
-                                <div class="col">
-                                        <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.care" matInput
-                                                        placeholder="Cuidados e bem estar" name="care"></textarea>
-                                        </mat-form-field>
-                                </div>
-                        </div>
-                        <div class="row">
-                                <div class="col">
-                                        <mat-form-field class="full-width">
-                                                <textarea [(ngModel)]="breed.curiosity" matInput
-                                                        placeholder="Curiosidades" name="curiosity"></textarea>
-                                        </mat-form-field>
-                                </div>
-                        </div>
-                </mat-card-content>
-                <mat-card-actions>
-                        <button mat-raised-button color="primary" (click)="createBreed()">Salvar</button>
-                </mat-card-actions>
-        </mat-card>
+<form (ngSubmit)="createBreed()">
+	<mat-card class="shipping-card">
+		<mat-card-header>
+			<mat-card-title>Cadastro de raças</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<div class="row">
+				<div class="col">
+					<mat-form-field>
+						<mat-select 
+							[(ngModel)]="selectedSpecie"
+							name="specie" 
+							placeholder="Espécie">
+							<mat-option *ngFor="let specie of species"
+								[value]="specie">{{specie.name}}</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<input [(ngModel)]="breed.name" matInput placeholder="Nome" name="name">
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<textarea [(ngModel)]="breed.origin" matInput placeholder="Origem"
+							name="origin"></textarea>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<textarea [(ngModel)]="breed.slogan" matInput placeholder="Slogan"
+							name="slogan"></textarea>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<textarea [(ngModel)]="breed.summary" matInput placeholder="Resumo"
+							name="summary"></textarea>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<textarea [(ngModel)]="breed.information" matInput
+							placeholder="Informações" name="information">
+					</textarea>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<textarea [(ngModel)]="breed.look" matInput placeholder="Aparência"
+							name="look"></textarea>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<textarea [(ngModel)]="breed.care" matInput
+							placeholder="Cuidados e bem estar" name="care"></textarea>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<textarea [(ngModel)]="breed.curiosity" matInput
+							placeholder="Curiosidades" name="curiosity"></textarea>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-chip-list #chipList>
+						<mat-chip *ngFor="let attrib of breed.attributesbreed" 
+							[selectable]="selectable"
+							[removable]="removable" 
+							(removed)="removeAttribute(attrib)"
+							[color]="accent">
+							{{attrib.name}}
+							<mat-icon matChipRemove>cancel</mat-icon>
+						</mat-chip>
+					</mat-chip-list>
+				</div>
+			</div>
+
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-raised-button color="primary">Salvar</button>
+			<button mat-raised-button color="primary" type="button" (click)="addAttribute()">Características</button>
+		</mat-card-actions>
+	</mat-card>
 </form>

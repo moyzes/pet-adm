@@ -1,5 +1,9 @@
+import { Attribute } from '../attribute/attribute.model';
+import { Specie } from '../specie/specie.model';
+
 export class Breed {
     id: number;
+    specie: Specie;
     name: string;
     care: string;
     curiosity: string;
@@ -14,5 +18,6 @@ export class Breed {
     origin: string;
     slogan: string;
     summary: string;
+    attributesbreed: Attribute[];
 }
 
