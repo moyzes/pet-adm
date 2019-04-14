@@ -1,28 +1,38 @@
-<h2>Características</h2>
+<mat-card class="shipping-card">
+	<mat-card-header>
+		<mat-card-title>Características</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-table [dataSource]="attributes">
 
-<button mat-raised-button color="primary" routerLink="/addattribute">Novo</button>
-<p></p>
-<mat-table [dataSource]="attributes">
+			<ng-container matColumnDef="name">
+				<mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+				<mat-cell *matCellDef="let attribute">
+					<a (click)="editAttribute(attribute)" class="mat-row-link">{{attribute.name}}</a>
+				</mat-cell>
+			</ng-container>
+		
+			<ng-container matColumnDef="attributetype">
+				<mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
+				<mat-cell *matCellDef="let attribute">{{attribute.attributetype.name}}</mat-cell>
+			</ng-container>
+		
+			<ng-container matColumnDef="action">
+				<mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+				<mat-cell *matCellDef="let attribute">
+					<button mat-stroked-button color="accent" (click)="deleteAttribute(attribute)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</mat-cell>
+			</ng-container>
+		
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		
+		</mat-table>
+	</mat-card-content>
+</mat-card>
 
-	<ng-container matColumnDef="name">
-		<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-		<mat-cell *matCellDef="let attribute">{{attribute.name}}</mat-cell>
-	</ng-container>
-
-	<ng-container matColumnDef="attributetype">
-			<mat-header-cell *matHeaderCellDef> Tipo </mat-header-cell>
-			<mat-cell *matCellDef="let attribute">{{attribute.attributetype.name}}</mat-cell>
-		</ng-container>
-
-	<ng-container matColumnDef="action">
-		<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
-		<mat-cell *matCellDef="let attribute">
-			<button mat-raised-button color="primary" (click)="editAttribute(attribute)">Editar</button>&nbsp;
-			<button mat-raised-button color="primary" (click)="deleteAttribute(attribute)">Apagar</button>
-		</mat-cell>
-	</ng-container>
-
-	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-</mat-table>
+<button mat-fab color="primary" routerLink="/addattribute" id="add">
+	<mat-icon>add</mat-icon>
+</button>
