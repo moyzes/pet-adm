@@ -47,6 +47,7 @@ export class EditAttributeComponent implements OnInit {
 	}
 
 	onSubmit() {
+		this.editForm.value.attributetype = {id: this.editForm.value.attributetype}
 		this.attributeService.updateAttribute(this.editForm.value)
 			.pipe(first())
 			.subscribe(() => {
