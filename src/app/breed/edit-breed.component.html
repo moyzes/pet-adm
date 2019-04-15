@@ -6,6 +6,12 @@
 		<mat-card-content>
 			<div class="row">
 				<div class="col">
+					<mat-form-field class="full-width">
+						<input formControlName="name" id="name" matInput placeholder="Nome"
+							name="name">
+					</mat-form-field>
+				</div>
+				<div class="col">
 					<mat-form-field>
 						<mat-select 
 							formControlName="specie" name="specie">
@@ -17,9 +23,41 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<mat-form-field class="full-width">
-						<input formControlName="name" id="name" matInput placeholder="Nome"
-							name="name">
+					<mat-form-field>
+						<input formControlName="minheight" id="minheight" matInput
+							placeholder="minheight" name="minheight">
+					</mat-form-field>
+				</div>
+				<div class="col">
+					<mat-form-field>
+						<input formControlName="maxheight" id="maxheight" matInput
+							placeholder="maxheight" name="maxheight">
+					</mat-form-field>
+				</div>
+				<div class="col">
+					<mat-form-field>
+						<input formControlName="minlifetime" id="minlifetime" matInput
+							placeholder="minlifetime" name="minlifetime">
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field>
+						<input formControlName="minweight" id="minweight" matInput
+							placeholder="minweight" name="minweight">
+					</mat-form-field>
+				</div>
+				<div class="col">
+					<mat-form-field>
+						<input formControlName="maxweight" id="maxweight" matInput
+							placeholder="maxweight" name="maxweight">
+					</mat-form-field>
+				</div>
+				<div class="col">
+					<mat-form-field>
+						<input formControlName="maxlifetime" id="maxlifetime" matInput
+							placeholder="maxlifetime" name="maxlifetime">
 					</mat-form-field>
 				</div>
 			</div>
