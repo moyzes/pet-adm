@@ -13,6 +13,7 @@
 				</div>
 				<div class="col">
 					<mat-form-field>
+						<mat-label>Espécie</mat-label>
 						<mat-select 
 							formControlName="specie" name="specie">
 							<mat-option *ngFor="let specie of species"
@@ -24,40 +25,70 @@
 			<div class="row">
 				<div class="col">
 					<mat-form-field>
-						<input formControlName="minheight" id="minheight" matInput
-							placeholder="minheight" name="minheight">
+						<mat-label>Altura mínima</mat-label>
+						<select matNativeControl required formControlName="minheight">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
 					</mat-form-field>
 				</div>
 				<div class="col">
 					<mat-form-field>
-						<input formControlName="maxheight" id="maxheight" matInput
-							placeholder="maxheight" name="maxheight">
+						<mat-label>Altura máxima</mat-label>
+						<select matNativeControl required formControlName="maxheight">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
 					</mat-form-field>
 				</div>
 				<div class="col">
 					<mat-form-field>
-						<input formControlName="minlifetime" id="minlifetime" matInput
-							placeholder="minlifetime" name="minlifetime">
+						<mat-label>Expectativa de vida mínima</mat-label>
+						<select matNativeControl required formControlName="minlifetime">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field>
-						<input formControlName="minweight" id="minweight" matInput
-							placeholder="minweight" name="minweight">
+						<mat-label>Peso mínimo</mat-label>
+						<select matNativeControl required formControlName="minweight">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
 					</mat-form-field>
 				</div>
 				<div class="col">
 					<mat-form-field>
-						<input formControlName="maxweight" id="maxweight" matInput
-							placeholder="maxweight" name="maxweight">
+						<mat-label>Peso máximo</mat-label>
+						<select matNativeControl required formControlName="maxweight">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
 					</mat-form-field>
 				</div>
 				<div class="col">
 					<mat-form-field>
-						<input formControlName="maxlifetime" id="maxlifetime" matInput
-							placeholder="maxlifetime" name="maxlifetime">
+						<mat-label>Expectativa de vida máxima</mat-label>
+						<select matNativeControl required formControlName="maxlifetime">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
 					</mat-form-field>
 				</div>
 			</div>
