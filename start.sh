@@ -1,1 +1,1 @@
-ng serve --proxy-config proxy.config.json
+ng serve --ssl=true --proxy-config proxy.config.json

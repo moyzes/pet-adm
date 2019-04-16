@@ -33,6 +33,8 @@ import { BreedService } from './breed/breed.service';
 import { AddBreedComponent } from './breed/add-breed.component';
 import { EditBreedComponent } from './breed/edit-breed.component';
 
+import { LoginComponent } from './login/login.component';
+
 import { AttributeComponent } from './attribute/attribute.component';
 import { AddAttributeComponent } from './attribute/add-attribute.component';
 import { EditAttributeComponent } from './attribute/edit-attribute.component';
@@ -40,6 +42,27 @@ import { AttributeService } from './attribute/attribute.service';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { AttributebreedComponent } from './attributebreed/attributebreed.component';
 import { AttributeBreedService } from './attributebreed/attributebreed.service';
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
+
+let config = new AuthServiceConfig([
+	{
+	  id: GoogleLoginProvider.PROVIDER_ID,
+	  provider: new GoogleLoginProvider("968935311452-3bq7dojhdvsump5egjoqjd9i7emabkc5")
+	},
+	{
+	  id: FacebookLoginProvider.PROVIDER_ID,
+	  provider: new FacebookLoginProvider("680985052334686")
+	},
+	{
+	  id: LinkedInLoginProvider.PROVIDER_ID,
+	  provider: new LinkedInLoginProvider("LinkedIn-client-Id", false, 'en_US')
+	}
+  ]);
+   
+  export function provideConfig() {
+	return config;
+  }
 
 @NgModule({
 	declarations: [
@@ -66,7 +89,8 @@ import { AttributeBreedService } from './attributebreed/attributebreed.service';
 		EditBreedComponent,
 		BreedComponent,
 		ConfirmComponent,
-		AttributebreedComponent
+		AttributebreedComponent,
+		LoginComponent
 	],
 	imports: [
 		BrowserModule,
@@ -87,9 +111,14 @@ import { AttributeBreedService } from './attributebreed/attributebreed.service';
 		ReactiveFormsModule,
 		MatTableModule,
 		MatDialogModule,
-		MatChipsModule
+		MatChipsModule,
+		SocialLoginModule
 	],
 	providers: [
+		{
+			provide: AuthServiceConfig,
+			useFactory: provideConfig
+		  },
 		UserService,
 		SpecieService,
 		AttributeTypeService,
@@ -98,6 +127,7 @@ import { AttributeBreedService } from './attributebreed/attributebreed.service';
 		AttributeBreedService,
 		{provide: MatDialogRef, useValue: {}}
 	],
+
 	entryComponents: [ConfirmComponent, AttributebreedComponent],
 	bootstrap: [AppComponent]
 })

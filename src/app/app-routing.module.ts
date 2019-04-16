@@ -21,6 +21,7 @@ import { AttributeComponent } from './attribute/attribute.component';
 import { AddAttributeComponent } from './attribute/add-attribute.component';
 import { EditAttributeComponent } from './attribute/edit-attribute.component';
 
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 	{path: 'user', component: UserComponent},
@@ -40,7 +41,8 @@ const routes: Routes = [
 	{path: 'addattribute', component: AddAttributeComponent},
 	{path: 'breed', component: BreedComponent},
 	{path: 'editbreed', component: EditBreedComponent},
-	{path: 'addbreed', component: AddBreedComponent}
+	{path: 'addbreed', component: AddBreedComponent},
+	{path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
