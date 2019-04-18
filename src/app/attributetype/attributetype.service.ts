@@ -13,7 +13,6 @@ export class AttributeTypeService {
 
   constructor(private router: Router, private http:HttpClient) {}
 
-  // private url = 'https://procura-pet.herokuapp.com/';
   private url = '/api'; 
   
   public getAttributeType( id: number ) {
