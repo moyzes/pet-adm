@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule, MatSlideToggleModule } from '@angular/material';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -47,22 +47,22 @@ import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from
 
 let config = new AuthServiceConfig([
 	{
-	  id: GoogleLoginProvider.PROVIDER_ID,
-	  provider: new GoogleLoginProvider("968935311452-3bq7dojhdvsump5egjoqjd9i7emabkc5")
+		id: GoogleLoginProvider.PROVIDER_ID,
+		provider: new GoogleLoginProvider("968935311452-3bq7dojhdvsump5egjoqjd9i7emabkc5")
 	},
 	{
-	  id: FacebookLoginProvider.PROVIDER_ID,
-	  provider: new FacebookLoginProvider("680985052334686")
+		id: FacebookLoginProvider.PROVIDER_ID,
+		provider: new FacebookLoginProvider("680985052334686")
 	},
 	{
-	  id: LinkedInLoginProvider.PROVIDER_ID,
-	  provider: new LinkedInLoginProvider("LinkedIn-client-Id", false, 'en_US')
+		id: LinkedInLoginProvider.PROVIDER_ID,
+		provider: new LinkedInLoginProvider("LinkedIn-client-Id", false, 'en_US')
 	}
-  ]);
+]);
    
-  export function provideConfig() {
+export function provideConfig() {
 	return config;
-  }
+}
 
 @NgModule({
 	declarations: [
@@ -112,19 +112,17 @@ let config = new AuthServiceConfig([
 		MatTableModule,
 		MatDialogModule,
 		MatChipsModule,
+		MatSlideToggleModule,
 		SocialLoginModule
 	],
 	providers: [
-		{
-			provide: AuthServiceConfig,
-			useFactory: provideConfig
-		  },
 		UserService,
 		SpecieService,
 		AttributeTypeService,
 		BreedService,
 		AttributeService,
 		AttributeBreedService,
+		{provide: AuthServiceConfig, useFactory: provideConfig},
 		{provide: MatDialogRef, useValue: {}}
 	],
 
