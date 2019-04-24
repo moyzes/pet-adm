@@ -10,5 +10,6 @@ export class User {
     lastlocation: string;
     name: string;
     zipcode: string;
+    superuser: boolean;
 }
 
