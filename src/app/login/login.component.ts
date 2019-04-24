@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	signInWithGoogle(): void {
-		
+		/*
 		let googleProvider = new GoogleLoginProvider("968935311452-3bq7dojhdvsump5egjoqjd9i7emabkc5");
 		console.log(googleProvider)
 
@@ -32,10 +32,14 @@ export class LoginComponent implements OnInit {
 			//this.sendToRestApiMethod(userData.idToken);
 			console.log(userData.idToken)
 		});
-		//this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+
+		*/
+		
+		this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
 	}
 
 	signInWithFB(): void {
+		
 		this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
 	}
 
