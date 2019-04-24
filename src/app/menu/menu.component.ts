@@ -11,7 +11,7 @@ import { SocialUser } from 'angularx-social-login';
 })
 export class MenuComponent implements OnInit{
 	
-	user: SocialUser;
+	usuariologado: SocialUser;
 
 	isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
 		.pipe(
@@ -22,8 +22,8 @@ export class MenuComponent implements OnInit{
 
 	ngOnInit() {
 		
-		this.user = JSON.parse(localStorage.getItem("usuariologado"));
-
+		this.usuariologado = JSON.parse(localStorage.getItem("usuariologado"));
+		//console.log("Usuario logado:"+ JSON.stringify(this.usuariologado));
 	}
 
 }

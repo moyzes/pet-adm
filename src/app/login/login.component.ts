@@ -18,23 +18,14 @@ export class LoginComponent implements OnInit {
 	ngOnInit() {
 		this.authService.authState.subscribe((user) => {
 			this.user = user;
+			
+			localStorage.setItem("usuariologado", JSON.stringify(user));
+			console.log("Usuario logado:"+ JSON.stringify(user));
+			
 		});
 	}
 
 	signInWithGoogle(): void {
-		/*
-		let googleProvider = new GoogleLoginProvider("968935311452-3bq7dojhdvsump5egjoqjd9i7emabkc5");
-		console.log(googleProvider)
-
-   		googleProvider.signIn(googleProvider).then((userData) => {
-			//on success
-			//this will return user data from google. What you need is a user token which you will send it to the server
-			//this.sendToRestApiMethod(userData.idToken);
-			console.log(userData.idToken)
-		});
-
-		*/
-		
 		this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
 	}
 
