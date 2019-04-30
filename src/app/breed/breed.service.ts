@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Router} from "@angular/router";
 import { Breed } from './breed.model';
+import { Measure } from './measure.model';
 
 
 const httpOptions = {
@@ -37,6 +38,10 @@ export class BreedService {
 	public updateBreed(breed: Breed) {
 		this.router.navigate(['breed']);
 		return this.http.put<Breed>(this.url + "/" + "updateBreed" + "/" + breed.id, breed);
+	}
+
+	public getMeasures() {
+		return this.http.get<Measure[]>(this.url + "/" + "listMeasures");
 	}
 
 }

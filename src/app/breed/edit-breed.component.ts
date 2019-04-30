@@ -10,6 +10,7 @@ import { Specie } from '../specie/specie.model';
 import { SpecieService } from '../specie/specie.service';
 import { AttributeBreedService } from '../attributebreed/attributebreed.service';
 import { Attribute } from '../attribute/attribute.model';
+import { Measure } from './measure.model';
 
 @Component({
 	selector: 'app-edit-breed',
@@ -18,12 +19,14 @@ import { Attribute } from '../attribute/attribute.model';
 })
 export class EditBreedComponent implements OnInit {
 
+	measures: Measure[];
 	species: Specie[];
 	breed: Breed;
 	editForm: FormGroup;
 	visible = true;
 	selectable = true;
 	removable = true;
+	Arr = Array;
 
 	constructor(
 		private formBuilder: FormBuilder,
@@ -35,6 +38,10 @@ export class EditBreedComponent implements OnInit {
 
 		this.specieService.getSpecies().subscribe(data => {
 			this.species = data;
+		});
+
+		this.breedService.getMeasures().subscribe(data => {
+			this.measures = data;
 		});
 	}
 

@@ -20,4 +20,3 @@ export class Breed {
     summary: string;
     attributesbreed: Attribute[];
 }
-

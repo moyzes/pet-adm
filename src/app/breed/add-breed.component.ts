@@ -8,6 +8,7 @@ import { AttributebreedComponent } from '../attributebreed/attributebreed.compon
 import { Attribute } from '../attribute/attribute.model';
 import { SpecieService } from '../specie/specie.service';
 import { Specie } from '../specie/specie.model';
+import { Measure } from './measure.model';
 
 @Component({
 	templateUrl: './add-breed.component.html',
@@ -17,6 +18,7 @@ export class AddBreedComponent {
 
 	selectedSpecie: Specie
 	species: Specie[];
+	measures: Measure[];
 	breed: Breed = new Breed();
 	visible = true;
 	selectable = true;
@@ -30,6 +32,11 @@ export class AddBreedComponent {
 		
 		this.specieService.getSpecies().subscribe(data => {
 			this.species = data;
+		});
+
+		this.breedService.getMeasures().subscribe(data => {
+			console.log(data)
+			this.measures = data;
 		});
 	}
 

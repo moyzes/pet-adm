@@ -17,6 +17,7 @@
 					</mat-form-field>
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
@@ -24,6 +25,32 @@
 					</mat-form-field>
 				</div>
 			</div>
+
+			<!-- Measures section start -->
+			<div class="row" *ngFor="let measure of measures">
+				<mat-form-field class="measures">
+					<mat-label>{{measure.labelName | titlecase}} min ({{measure.unit}})</mat-label>
+					<mat-select required
+						[(ngModel)]="breed['min'+measure.fieldName]" 
+						name="min{{measure.fieldName}}">
+						<mat-option *ngFor="let dummy of ' '.repeat(measure.max+1).split(''), let x = index" 
+							[value]="x">{{x}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			
+				<mat-form-field>
+					<mat-label>{{measure.labelName | titlecase}} max ({{measure.unit}})</mat-label>
+					<mat-select matNativeControl required
+						[(ngModel)]="breed['max'+measure.fieldName]" 
+						name="max{{measure.fieldName}}">
+						<mat-option *ngFor="let dummy of ' '.repeat(measure.max+1).split(''), let y = index" 
+							[value]="y">{{y}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<!-- Measures section end -->
+
+			<!--
 			<div class="row">
 				<div class="col">
 					<mat-form-field>
@@ -94,6 +121,8 @@
 					</mat-form-field>
 				</div>
 			</div>
+			-->
+
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">

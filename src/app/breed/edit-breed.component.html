@@ -22,76 +22,27 @@
 					</mat-form-field>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Altura mínima</mat-label>
-						<select matNativeControl required formControlName="minheight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Altura máxima</mat-label>
-						<select matNativeControl required formControlName="maxheight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Expectativa de vida mínima</mat-label>
-						<select matNativeControl required formControlName="minlifetime">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
+
+			<!-- Measures section start -->
+			<div class="row" *ngFor="let measure of measures">
+				<mat-form-field class="measures">
+					<mat-label>{{measure.labelName | titlecase}} min ({{measure.unit}})</mat-label>
+					<mat-select required formControlName="min{{measure.fieldName}}">
+						<mat-option *ngFor="let dummy of ' '.repeat(measure.max+1).split(''), let x = index" 
+						[value]="x">{{x}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			
+				<mat-form-field>
+					<mat-label>{{measure.labelName | titlecase}} max ({{measure.unit}})</mat-label>
+					<mat-select required formControlName="max{{measure.fieldName}}">
+						<mat-option *ngFor="let dummy of ' '.repeat(measure.max+1).split(''), let x = index" 
+						[value]="x">{{x}}</mat-option>
+					</mat-select>
+				</mat-form-field>
 			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Peso mínimo</mat-label>
-						<select matNativeControl required formControlName="minweight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Peso máximo</mat-label>
-						<select matNativeControl required formControlName="maxweight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Expectativa de vida máxima</mat-label>
-						<select matNativeControl required formControlName="maxlifetime">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-			</div>
+			<!-- Measures section end -->
+
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
