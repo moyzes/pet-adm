@@ -14,6 +14,10 @@ export class EditUserComponent implements OnInit {
 
 	user: User;
 	editForm: FormGroup;
+	
+	// Variavel criada apenas para evitar erro de compilação no build
+	superuser: boolean;
+
 
 	constructor(
 		private formBuilder: FormBuilder,
@@ -39,8 +43,8 @@ export class EditUserComponent implements OnInit {
 			country:[], 
 			email:[], 
 			state:[], 
-			id_facebook:[], 
-			id_google:[], 
+			provider:[], 
+			token:[], 
 			lastlocation:[], 
 			zipcode:[],
 			superuser:[]

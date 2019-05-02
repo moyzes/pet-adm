@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { User } from '../user/user.model';
+import { UserService } from '../user/user.service';
 
 @Component({
 	selector: 'app-login',
@@ -11,17 +13,30 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-logi
 })
 export class LoginComponent implements OnInit {
 
-	user: SocialUser;
+	suser: SocialUser;
+	user: User;
 
-	constructor(private authService: AuthService) { }
+	constructor(private authService: AuthService, private userService: UserService) { }
 
 	ngOnInit() {
-		this.authService.authState.subscribe((user) => {
-			this.user = user;
+		this.authService.authState.subscribe((suser) => {
 			
-			localStorage.setItem("usuariologado", JSON.stringify(user));
-			console.log("Usuario logado:"+ JSON.stringify(user));
+			this.suser = suser;
+
+			if(suser!=null) {
+		
+				this.userService.login(suser).subscribe(data => {
+					console.log('user:'+ data)
+					console.log('suser:'+ suser)
+					this.user = data
+					localStorage.setItem("userlogado", JSON.stringify(this.user));
+					localStorage.setItem("suserlogado", JSON.stringify(this.suser));
+					
+				});
 			
+			}
+			
+
 		});
 	}
 

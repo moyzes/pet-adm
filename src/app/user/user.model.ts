@@ -5,8 +5,8 @@ export class User {
     country: string;
     email: string;
     state: string; 
-    id_facebook: string;
-    id_google: string;
+    provider: string;
+    token: string;
     lastlocation: string;
     name: string;
     zipcode: string;

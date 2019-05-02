@@ -1,5 +1,5 @@
 <div class="jumbotron bg-transparent text-center">
-	<div *ngIf="!user" class="card text-center">
+	<div *ngIf="!suser" class="card text-center">
 		
 		<div class="card-block">
 			<h4 class="card-title">Efetue o Login para continuar...</h4>
@@ -13,15 +13,15 @@
 		</div>
 	
 	</div>
-	<div *ngIf="user" class="card text-center">
+	<div *ngIf="suser" class="card text-center">
 		<h6 class="card-header">
 			Login
 		</h6>
 		<div class="card-block"></div>
-		<img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
+		<img class="card-img-top img-responsive photo" src="{{ suser.photoUrl }}">
 		<div class="card-block">
-			<h4 class="card-title">Bem vindo {{user.name}}</h4>
-			<p class="card-text">{{user.email}}</p>
+			<h4 class="card-title">Bem vindo {{suser.name}}</h4>
+			<p class="card-text">{{suser.email}}</p>
 		</div>
 		<div class="card-block">
 			<button mat-raised-button color="primary" (click)="signOut()">Logout</button>
