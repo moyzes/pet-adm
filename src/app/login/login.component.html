@@ -13,6 +13,11 @@
 		</div>
 	
 	</div>
+
+	<div *ngIf="user && !user.superuser" class="card text-center">
+		<h4 class="card-title">{{suser.name}}, você não possui acesso administrativo ao sistema! </h4>
+	</div>
+
 	<div *ngIf="suser" class="card text-center">
 		<h6 class="card-header">
 			Login

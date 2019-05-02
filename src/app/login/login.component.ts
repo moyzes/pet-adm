@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
 	suser: SocialUser;
 	user: User;
+	
 
 	constructor(private authService: AuthService, private userService: UserService) { }
 
@@ -51,5 +52,7 @@ export class LoginComponent implements OnInit {
 
 	signOut(): void {
 		this.authService.signOut();
+		localStorage.removeItem("userlogado");
+		localStorage.removeItem("suserlogado");
 	}
 }

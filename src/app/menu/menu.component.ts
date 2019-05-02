@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SocialUser } from 'angularx-social-login';
+import { User } from '../user/user.model';
 import { Router } from "@angular/router";
 
 @Component({
@@ -12,7 +13,10 @@ import { Router } from "@angular/router";
 })
 export class MenuComponent implements OnInit{
 	
-	usuariologado: SocialUser;
+	usuariologado: User;
+	susuariologado: SocialUser;
+	admin: boolean;
+	
 
 	isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
 		.pipe(
@@ -20,22 +24,24 @@ export class MenuComponent implements OnInit{
 		);
 
 	constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
-		
-
+	
 		
 	}
 
 	ngOnInit() {
-		/*
-		this.usuariologado = JSON.parse(localStorage.getItem("usuariologado"));
+		
+		this.usuariologado = JSON.parse(localStorage.getItem("userlogado"));
+		this.susuariologado = JSON.parse(localStorage.getItem("suserlogado"));
 
-		if(!this.usuariologado) {
+		this.admin = this.usuariologado.superuser;
+
+		if(!this.usuariologado || !this.admin) {
 
 			this.router.navigate(['login']);
 
 		}
-		*/
-		//console.log("Usuario logado:"+ JSON.stringify(this.usuariologado));
+		
+		console.log("Usuario logado:"+ JSON.stringify(this.usuariologado));
 	}
 
 }
