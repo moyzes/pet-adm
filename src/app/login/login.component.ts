@@ -5,6 +5,7 @@ import { SocialUser } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-login',
@@ -16,8 +17,7 @@ export class LoginComponent implements OnInit {
 	suser: SocialUser;
 	user: User;
 	
-
-	constructor(private authService: AuthService, private userService: UserService) { }
+	constructor(private authService: AuthService, private userService: UserService,	private router: Router) { }
 
 	ngOnInit() {
 		this.authService.authState.subscribe((suser) => {
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
 			if(suser!=null) {
 		
 				this.userService.login(suser).subscribe(data => {
-					console.log('user:'+ data)
-					console.log('suser:'+ suser)
+			//		console.log('user:'+ data)
+			//		console.log('suser:'+ suser)
 					this.user = data
 					localStorage.setItem("userlogado", JSON.stringify(this.user));
 					localStorage.setItem("suserlogado", JSON.stringify(this.suser));
@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
 			
 			}
 			
-
 		});
 	}
 
@@ -54,5 +53,8 @@ export class LoginComponent implements OnInit {
 		this.authService.signOut();
 		localStorage.removeItem("userlogado");
 		localStorage.removeItem("suserlogado");
+		this.suser = null;
+		this.user = null;
+		this.router.navigate(['login']);
 	}
 }

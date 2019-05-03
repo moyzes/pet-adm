@@ -1,36 +1,27 @@
-<div class="jumbotron bg-transparent text-center">
-	<div *ngIf="!suser" class="card text-center">
+<mat-card class="shipping-card">
+	<mat-card-header>
+		<mat-card-title>Login</mat-card-title>
+		<mat-card-subtitle *ngIf="!suser">Efetue o login na rede social de sua preferência para continuar...</mat-card-subtitle>
+		<mat-card-subtitle *ngIf="suser">Bem vindo {{suser.name}}</mat-card-subtitle> 
+	</mat-card-header>
+	<mat-card-content>
+
+		<div class="card-block">
+
+			<div *ngIf="user && !user.superuser" class="card text-center">
+				<h4 class="card-title">{{suser.name}}, você não possui acesso administrativo ao sistema! </h4>
+			</div>
 		
-		<div class="card-block">
-			<h4 class="card-title">Efetue o Login para continuar...</h4>
+			<div *ngIf="suser" class="card text-center">
+				<img mat-card-image src="{{ suser.photoUrl }}" alt="Foto">
+			</div>
+		
 		</div>
-		<div class="card-block">
 
-				<button mat-raised-button color="primary" (click)="signInWithFB()">Login Facebook</button>
-				&nbsp;
-				<button mat-raised-button color="primary" (click)="signInWithGoogle()">Login Google</button>
-
-		</div>
-	
-	</div>
-
-	<div *ngIf="user && !user.superuser" class="card text-center">
-		<h4 class="card-title">{{suser.name}}, você não possui acesso administrativo ao sistema! </h4>
-	</div>
-
-	<div *ngIf="suser" class="card text-center">
-		<h6 class="card-header">
-			Login
-		</h6>
-		<div class="card-block"></div>
-		<img class="card-img-top img-responsive photo" src="{{ suser.photoUrl }}">
-		<div class="card-block">
-			<h4 class="card-title">Bem vindo {{suser.name}}</h4>
-			<p class="card-text">{{suser.email}}</p>
-		</div>
-		<div class="card-block">
-			<button mat-raised-button color="primary" (click)="signOut()">Logout</button>
-		</div>
-	
-	</div>
-</div>
+	</mat-card-content>
+	<mat-card-actions>
+		<button *ngIf="!suser" mat-raised-button color="primary" (click)="signInWithFB()">Login Facebook</button>
+		<button *ngIf="!suser" mat-raised-button color="primary" (click)="signInWithGoogle()">Login Google</button>
+		<button *ngIf="suser" mat-raised-button color="primary" (click)="signOut()">Logout</button>
+	</mat-card-actions>
+</mat-card>

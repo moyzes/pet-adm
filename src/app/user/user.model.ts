@@ -1,3 +1,4 @@
+import { UserPhoto } from './userphoto.model';
 export class User {
     id:	number;
     adress: string;
@@ -11,5 +12,6 @@ export class User {
     name: string;
     zipcode: string;
     superuser: boolean;
+    public photos: UserPhoto[];
 }
 

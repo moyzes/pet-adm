@@ -103,7 +103,19 @@
 
 		</mat-card-content>
 		<mat-card-actions>
-			<button mat-raised-button color="primary">Salvar</button>
+				<button mat-raised-button color="primary">Salvar</button>
 		</mat-card-actions>
+		
+		<mat-card>
+			<mat-card-header>
+				<div mat-card-avatar class="example-header-image"></div>
+				<mat-card-title>Foto</mat-card-title>
+				<mat-card-subtitle>{{user.name}}</mat-card-subtitle>
+			</mat-card-header>
+			<!-- <img data-ng-src="data:image/png;base64,{{user.photo[0]}}" formControlName="photo" mat-card-image alt="Foto"> -->
+			<img formControlName="photos" mat-card-image src="data:image/png;base64,{{user.photos[0].photo}}" alt="Foto">
+		</mat-card>
+		
 	</mat-card>
+
 </form>

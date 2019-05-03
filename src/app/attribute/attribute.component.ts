@@ -26,7 +26,6 @@ export class AttributeComponent implements OnInit{
 			console.log(this.attributes)
 		});
 	};
-
 	
 	deleteAttribute(attribute: Attribute): void {
 		this.attributeservice.deleteAttribute(attribute).subscribe(data => {
