@@ -4,38 +4,41 @@
 			<mat-card-title>Edição de usuários</mat-card-title>
 		</mat-card-header>
 		<mat-card-content>
+
+			<div class="row">
+				<div class="col">
+					<img mat-card-image name="photo" src="data:image/png;base64,{{user.photos[0].photo}}" alt="Foto">
+				</div>
+			</div>
+
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<input formControlName="name" id="name" matInput placeholder="Nome"
-							name="name">
+						<input formControlName="name" id="name" matInput placeholder="Nome" name="name">
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field>
-						<input formControlName="email" id="email" matInput placeholder="Email"
-							name="email">
+						<input formControlName="email" id="email" matInput placeholder="Email" name="email">
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
-				
+
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<input formControlName="adress" id="adress" matInput
-							placeholder="Endereço" name="adress">
+						<input formControlName="adress" id="adress" matInput placeholder="Endereço" name="adress">
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field>
-						<input formControlName="city" id="city" matInput placeholder="Cidade"
-							name="city">
+						<input formControlName="city" id="city" matInput placeholder="Cidade" name="city">
 					</mat-form-field>
 					<mat-form-field style="margin-left:10px">
 						<mat-label>Estado</mat-label>
@@ -74,48 +77,39 @@
 			<div class="row">
 				<div class="col">
 					<mat-form-field>
-						<input formControlName="zipcode" id="zipcode" matInput placeholder="Cep"
-							name="zipcode">
+						<input formControlName="zipcode" id="zipcode" matInput placeholder="Cep" name="zipcode">
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
-					<div class="col">
-						<mat-form-field>
-							<input readonly="true" formControlName="provider" id="provider" matInput placeholder="Rede Social"
-								name="provider">
-						</mat-form-field>
-					</div>
-			</div>
-			
-			<div class="row">
 				<div class="col">
-				
-						<mat-slide-toggle formControlName="superuser" name="superuser" id="superuser"
-							class="example-margin"
-							[checked]="superuser">
-							Administrador
-						</mat-slide-toggle>
-				
+					<mat-form-field>
+						<input readonly="true" formControlName="provider" id="provider" matInput
+							placeholder="Rede Social" name="provider">
+					</mat-form-field>
 				</div>
 			</div>
-			
 
+			<div class="row">
+				<div class="col">
+
+					<mat-slide-toggle formControlName="superuser" name="superuser" id="superuser" class="example-margin"
+						[checked]="superuser">
+						Administrador
+					</mat-slide-toggle>
+
+				</div>
+			</div>
 		</mat-card-content>
+
 		<mat-card-actions>
-				<button mat-raised-button color="primary">Salvar</button>
+			<button mat-raised-button color="primary">Salvar</button>
 		</mat-card-actions>
-		
-		<mat-card>
-			<mat-card-header>
-				<div mat-card-avatar class="example-header-image"></div>
-				<mat-card-title>Foto</mat-card-title>
-				<mat-card-subtitle>{{user.name}}</mat-card-subtitle>
-			</mat-card-header>
-			<!-- <img data-ng-src="data:image/png;base64,{{user.photo[0]}}" formControlName="photo" mat-card-image alt="Foto"> -->
-			<img formControlName="photos" mat-card-image src="data:image/png;base64,{{user.photos[0].photo}}" alt="Foto">
-		</mat-card>
-		
+
+		<input type="hidden" readonly="true" formControlName="photos" id="photos" name="photos">
+
+
+
 	</mat-card>
 
 </form>

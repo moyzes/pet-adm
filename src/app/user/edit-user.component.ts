@@ -47,17 +47,20 @@ export class EditUserComponent implements OnInit {
 			token:[], 
 			lastlocation:[], 
 			zipcode:[],
-			superuser:[]
+			superuser:[],
+			photos:[]
 		});
 		
 		this.userService.getUser(+userId).subscribe(data => {
 			console.log(data)
+			this.user = data;
 			this.editForm.setValue(data);
 		});
+
 	}
 
 	onSubmit() {
-		console.log(this.editForm.value)
+		//console.log(this.editForm.value)
 		this.userService.updateUser(this.editForm.value)
 			.pipe(first())
 			.subscribe(() => {

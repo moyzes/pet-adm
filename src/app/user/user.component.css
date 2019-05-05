@@ -29,3 +29,7 @@
 .mat-raised-button {
 	margin-right: 10px;
 }
+
+.mat-card-image {
+	width: 300px;
+} 

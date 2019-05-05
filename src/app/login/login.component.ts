@@ -27,12 +27,9 @@ export class LoginComponent implements OnInit {
 			if(suser!=null) {
 		
 				this.userService.login(suser).subscribe(data => {
-			//		console.log('user:'+ data)
-			//		console.log('suser:'+ suser)
 					this.user = data
 					localStorage.setItem("userlogado", JSON.stringify(this.user));
 					localStorage.setItem("suserlogado", JSON.stringify(this.suser));
-					
 				});
 			
 			}
@@ -41,20 +38,22 @@ export class LoginComponent implements OnInit {
 	}
 
 	signInWithGoogle(): void {
+		this.router.navigate(['/']);
 		this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+		
 	}
 
 	signInWithFB(): void {
-		
+		this.router.navigate(['/']);
 		this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
 	}
 
 	signOut(): void {
-		this.authService.signOut();
 		localStorage.removeItem("userlogado");
 		localStorage.removeItem("suserlogado");
 		this.suser = null;
 		this.user = null;
 		this.router.navigate(['login']);
+		this.authService.signOut();
 	}
 }

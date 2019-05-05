@@ -17,7 +17,12 @@ export class UserService {
 	private url = '/api';
 	
 	public getUser(id: number) {
-		return this.http.get<User[]>(this.url + "/" + "getUser" + "/" + id);
+		return this.http.get<User>(this.url + "/" + "getUser" + "/" + id);
+	}
+
+	public login(suser: SocialUser) {
+		this.router.navigate(['login']);
+		return this.http.post<User>(this.url + "/" + "login" , suser);
 	}
 
 	public getUserByEmail(email: String) {
@@ -36,11 +41,6 @@ export class UserService {
 	public createUser(user: User) {
 		this.router.navigate(['user']);
 		return this.http.post<User>(this.url + "/" + "addUser", user);
-	}
-
-	public login(suser: SocialUser) {
-		this.router.navigate(['login']);
-		return this.http.post<User>(this.url + "/" + "login" , suser);
 	}
 
 	public updateUser(user: User) {
