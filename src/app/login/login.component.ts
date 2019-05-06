@@ -40,14 +40,14 @@ export class LoginComponent implements OnInit {
 	signInWithGoogle(): void {
 		
 		this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-		this.router.navigate(['menu']);
+		//this.router.navigate(['login']);
 		
 	}
 
 	signInWithFB(): void {
 		
 		this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-		this.router.navigate(['menu']);
+		//this.router.navigate(['login']);
 	}
 
 	signOut(): void {
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 		this.user = null;
 		this.authService.signOut();
 		this.router.navigate(['login']);
-		location.reload();
+		//location.reload();
 	}
 
 	reload(): void {
