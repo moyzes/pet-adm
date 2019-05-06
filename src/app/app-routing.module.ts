@@ -22,6 +22,7 @@ import { AddAttributeComponent } from './attribute/add-attribute.component';
 import { EditAttributeComponent } from './attribute/edit-attribute.component';
 
 import { LoginComponent } from './login/login.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
 	{path: 'user', component: UserComponent},
@@ -43,10 +44,11 @@ const routes: Routes = [
 	{path: 'editbreed', component: EditBreedComponent},
 	{path: 'addbreed', component: AddBreedComponent},
 	{path: 'login', component: LoginComponent},
+	{path: 'menu', component: MenuComponent}
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
+	imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
 	exports: [RouterModule]
 })
 

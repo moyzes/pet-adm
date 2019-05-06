@@ -1,8 +1,7 @@
 <mat-card class="shipping-card">
 	<mat-card-header>
-		<mat-card-title>Login</mat-card-title>
-		<mat-card-subtitle *ngIf="!suser">Efetue o login na rede social de sua preferência para continuar...</mat-card-subtitle>
-		<mat-card-subtitle *ngIf="suser">Bem vindo {{suser.name}}</mat-card-subtitle> 
+		<mat-card-title *ngIf="!suser">Efetue o login na rede social de sua preferência para continuar...</mat-card-title>
+		<mat-card-title *ngIf="suser">Bem vindo {{suser.name}}</mat-card-title> 
 	</mat-card-header>
 	<mat-card-content>
 
@@ -23,5 +22,6 @@
 		<button *ngIf="!suser" mat-raised-button color="primary" (click)="signInWithFB()">Login Facebook</button>
 		<button *ngIf="!suser" mat-raised-button color="primary" (click)="signInWithGoogle()">Login Google</button>
 		<button *ngIf="suser" mat-raised-button color="primary" (click)="signOut()">Logout</button>
+		<button  mat-raised-button color="primary" (click)="reload()">reload</button>
 	</mat-card-actions>
 </mat-card>

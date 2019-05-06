@@ -38,14 +38,16 @@ export class LoginComponent implements OnInit {
 	}
 
 	signInWithGoogle(): void {
-		this.router.navigate(['/']);
+		
 		this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+		this.router.navigate(['menu']);
 		
 	}
 
 	signInWithFB(): void {
-		this.router.navigate(['/']);
+		
 		this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+		this.router.navigate(['menu']);
 	}
 
 	signOut(): void {
@@ -53,7 +55,13 @@ export class LoginComponent implements OnInit {
 		localStorage.removeItem("suserlogado");
 		this.suser = null;
 		this.user = null;
-		this.router.navigate(['login']);
 		this.authService.signOut();
+		this.router.navigate(['login']);
+		location.reload();
 	}
+
+	reload(): void {
+		this.router.navigate(['menu']);
+	}
+
 }
