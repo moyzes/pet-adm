@@ -1,17 +1,41 @@
 <mat-sidenav-container class="sidenav-container">
 	<mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-			[attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-			[mode]="(isHandset$ | async) ? 'over' : 'side'"
-			[opened]="!(isHandset$ | async)">
-		<mat-toolbar>Menu</mat-toolbar>
+		[attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+		[opened]="!(isHandset$ | async)">
 
+		<mat-card-content class="userinfo">
+
+			<div class="row">
+				<div class="col">
+					<img *ngIf="usuariologado" id="avatarpp" mat-card-image name="photo"
+						src="data:image/png;base64,{{usuariologado.photos[0].photo}}" alt="Foto">
+						<img *ngIf="!usuariologado" id="avatarpp" mat-card-image name="photo"
+						src="/assets/images/avatar.jpg" alt="Foto">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<span id="username">{{usuariologado.name}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<span id="useremail">{{usuariologado.email}}</span>
+				</div>
+			</div>
+
+		</mat-card-content>
+
+		<mat-divider id="userseparator"></mat-divider>
+
+	
 		<mat-nav-list>
-			
 			<a mat-list-item routerLink="/login" routerLinkActive="active">Login</a>
 			<a mat-list-item *ngIf="admin" routerLink="/user" routerLinkActive="active">Usuários</a>
 			<a mat-list-item *ngIf="admin" routerLink="/specie" routerLinkActive="active">Espécies</a>
 			<a mat-list-item *ngIf="admin" routerLink="/breed" routerLinkActive="active">Raças</a>
-			<a mat-list-item *ngIf="admin" routerLink="/attributetype" routerLinkActive="active">Tipos de características</a>
+			<a mat-list-item *ngIf="admin" routerLink="/attributetype" routerLinkActive="active">Tipos de
+				características</a>
 			<a mat-list-item *ngIf="admin" routerLink="/attribute" routerLinkActive="active">Características</a>
 			<a mat-list-item *ngIf="admin" href="#">Animais encontrados</a>
 			<a mat-list-item *ngIf="admin" href="#">Animais perdidos</a>
@@ -20,20 +44,14 @@
 	</mat-sidenav>
 	<mat-sidenav-content>
 		<mat-toolbar color="primary">
-			<button
-				type="button"
-				aria-label="Toggle sidenav"
-				mat-icon-button
-				(click)="drawer.toggle()"
+			<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
 				*ngIf="isHandset$ | async">
 				<mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
 			</button>
 			<span></span>
 		</mat-toolbar>
 		<router-outlet>
-		
-		<!-- Aqui entram as telas -->
-			
+				
 		</router-outlet>
 	</mat-sidenav-content>
 </mat-sidenav-container>

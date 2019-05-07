@@ -22,3 +22,10 @@
 	height: 20px;
 	padding-top: 10px; 
 }
+
+.avatargg {
+	vertical-align: middle;
+	width: 100px;
+	height: 100px;
+	border-radius: 50% !important;
+  }
