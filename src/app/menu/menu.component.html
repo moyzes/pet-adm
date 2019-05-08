@@ -28,9 +28,10 @@
 
 		<mat-divider id="userseparator"></mat-divider>
 
-	
 		<mat-nav-list>
-			<a mat-list-item routerLink="/login" routerLinkActive="active">Login</a>
+			<a mat-list-item *ngIf="!usuariologado" routerLink="/login" routerLinkActive="active">Login</a>
+			<a mat-list-item *ngIf="usuariologado" routerLink="/login" routerLinkActive="active">Logout</a>
+			<mat-divider id="userseparator"></mat-divider>
 			<a mat-list-item *ngIf="admin" routerLink="/user" routerLinkActive="active">Usuários</a>
 			<a mat-list-item *ngIf="admin" routerLink="/specie" routerLinkActive="active">Espécies</a>
 			<a mat-list-item *ngIf="admin" routerLink="/breed" routerLinkActive="active">Raças</a>

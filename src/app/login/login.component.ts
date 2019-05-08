@@ -6,6 +6,7 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-logi
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { Router } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
 	selector: 'app-login',
@@ -48,6 +49,7 @@ export class LoginComponent implements OnInit {
 		
 		this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
 		//this.router.navigate(['login']);
+		this.reload;
 	}
 
 	signOut(): void {
@@ -58,6 +60,7 @@ export class LoginComponent implements OnInit {
 		this.authService.signOut();
 		this.router.navigate(['login']);
 		//location.reload();
+		this.reload;
 	}
 
 	reload(): void {
