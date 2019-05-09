@@ -29,20 +29,20 @@
 			<!-- Measures section start -->
 			<div class="row" *ngFor="let measure of measures">
 				<mat-form-field class="measures">
-					<mat-label>{{measure.labelName | titlecase}} min ({{measure.unit}})</mat-label>
+					<mat-label>{{measure.labelname | titlecase}} min ({{measure.unit}})</mat-label>
 					<mat-select required
-						[(ngModel)]="breed['min'+measure.fieldName]" 
-						name="min{{measure.fieldName}}">
+						[(ngModel)]="breed['min'+measure.fieldname]" 
+						name="min{{measure.fieldname}}">
 						<mat-option *ngFor="let dummy of ' '.repeat(measure.max+1).split(''), let x = index" 
 							[value]="x">{{x}}</mat-option>
 					</mat-select>
 				</mat-form-field>
 			
 				<mat-form-field>
-					<mat-label>{{measure.labelName | titlecase}} max ({{measure.unit}})</mat-label>
+					<mat-label>{{measure.labelname | titlecase}} max ({{measure.unit}})</mat-label>
 					<mat-select matNativeControl required
-						[(ngModel)]="breed['max'+measure.fieldName]" 
-						name="max{{measure.fieldName}}">
+						[(ngModel)]="breed['max'+measure.fieldname]" 
+						name="max{{measure.fieldname}}">
 						<mat-option *ngFor="let dummy of ' '.repeat(measure.max+1).split(''), let y = index" 
 							[value]="y">{{y}}</mat-option>
 					</mat-select>
