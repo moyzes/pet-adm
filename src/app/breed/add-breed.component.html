@@ -50,79 +50,6 @@
 			</div>
 			<!-- Measures section end -->
 
-			<!--
-			<div class="row">
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Altura mínima</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.minheight" name="minheight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Altura máxima</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.maxheight" name="minheight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Expectativa de vida mínima</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.minlifetime" name="minlifetime">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Peso mínimo</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.minweight" name="minweight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Peso máximo</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.maxweight" name="maxweight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Expectativa de vida máxima</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.maxlifetime" name="maxlifetime">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-			</div>
-			-->
-
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
@@ -156,6 +83,7 @@
 					</mat-form-field>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
@@ -164,6 +92,29 @@
 					</mat-form-field>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<textarea [(ngModel)]="breed.pelage" matInput placeholder="Pelagem"
+							name="pelage"></textarea>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<textarea [(ngModel)]="breed.collor" matInput placeholder="Cor"
+							name="collor"></textarea>
+					</mat-form-field>
+				</div>
+			</div>
+
+
+
+
+
+
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">

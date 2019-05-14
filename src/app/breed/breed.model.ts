@@ -19,4 +19,6 @@ export class Breed {
     slogan: string;
     summary: string;
     attributesbreed: Attribute[];
+    pelage: string;
+    collor: string
 }

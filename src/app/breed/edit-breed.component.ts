@@ -63,6 +63,8 @@ export class EditBreedComponent implements OnInit {
 			curiosity:[],
 			information:[],
 			look:[],
+			pelage:[],
+			collor:[],
 			maxheight:[],
 			maxlifetime:[],
 			maxweight:[],
@@ -77,7 +79,7 @@ export class EditBreedComponent implements OnInit {
 		});
 		
 		this.breedService.getBreed(+breedId).subscribe(data => {
-			console.log(data)
+			//console.log(data)
 			this.editForm.setValue(data);
 			this.editForm.controls['specie'].setValue(this.editForm.value.specie.id);
 		});
@@ -85,7 +87,7 @@ export class EditBreedComponent implements OnInit {
 
 	onSubmit() {
 		this.editForm.value.specie = {id:this.editForm.value.specie}
-		console.log(this.editForm.value)
+		//console.log(this.editForm.value)
 		this.breedService.updateBreed(this.editForm.value)
 			.pipe(first())
 			.subscribe(() => {
@@ -95,7 +97,7 @@ export class EditBreedComponent implements OnInit {
 				console.log(error);
 			}
 		);
-	}
+	} 
 
 	addAttribute(): void {
 		console.log(this.breed);

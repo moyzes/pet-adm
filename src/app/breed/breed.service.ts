@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 import { Breed } from './breed.model';
 import { Measure } from './measure.model';
 
