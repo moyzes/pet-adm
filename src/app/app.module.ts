@@ -45,6 +45,8 @@ import { AttributeBreedService } from './attributebreed/attributebreed.service';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
 
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+
 let config = new AuthServiceConfig([
 	{
 	
@@ -125,7 +127,8 @@ export function provideConfig() {
 		AttributeService,
 		AttributeBreedService,
 		{provide: AuthServiceConfig, useFactory: provideConfig},
-		{provide: MatDialogRef, useValue: {}}
+		{provide: MatDialogRef, useValue: {}},
+		{provide: LocationStrategy, useClass: HashLocationStrategy}
 	],
 
 	entryComponents: [ConfirmComponent, AttributebreedComponent],
