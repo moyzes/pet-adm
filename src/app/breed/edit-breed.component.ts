@@ -27,6 +27,7 @@ export class EditBreedComponent implements OnInit {
 	selectable = true;
 	removable = true;
 	Arr = Array;
+	maxLength: number = 200
 
 	constructor(
 		private formBuilder: FormBuilder,
