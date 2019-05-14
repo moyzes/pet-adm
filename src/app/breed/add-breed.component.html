@@ -48,135 +48,95 @@
 					</mat-select>
 				</mat-form-field>
 			</div>
-			<!-- Measures section end -->
-
-			<!--
-			<div class="row">
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Altura mínima</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.minheight" name="minheight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Altura máxima</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.maxheight" name="minheight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Expectativa de vida mínima</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.minlifetime" name="minlifetime">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Peso mínimo</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.minweight" name="minweight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Peso máximo</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.maxweight" name="maxweight">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Expectativa de vida máxima</mat-label>
-						<select matNativeControl required [(ngModel)]="breed.maxlifetime" name="maxlifetime">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</mat-form-field>
-				</div>
-			</div>
-			-->
 
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea [(ngModel)]="breed.origin" matInput placeholder="Origem"
-							name="origin"></textarea>
+						<textarea 
+							[(ngModel)]="breed.origin" 
+							matInput placeholder="Origem"
+							maxlength="{{maxLength}}"
+							name="origin"
+							#origin></textarea>
+						<mat-hint align="end">{{origin.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea [(ngModel)]="breed.slogan" matInput placeholder="Slogan"
-							name="slogan"></textarea>
+						<textarea 
+							[(ngModel)]="breed.slogan" 
+							matInput placeholder="Slogan"
+							maxlength="{{maxLength}}"
+							name="slogan"
+							#slogan></textarea>
+						<mat-hint align="end">{{slogan.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea [(ngModel)]="breed.summary" matInput placeholder="Resumo"
-							name="summary"></textarea>
+						<textarea 
+							[(ngModel)]="breed.summary" 
+							matInput placeholder="Resumo"
+							maxlength="{{maxLength}}"
+							name="summary"
+							#summary></textarea>
+						<mat-hint align="end">{{summary.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea [(ngModel)]="breed.information" matInput
-							placeholder="Informações" name="information">
-					</textarea>
+						<textarea 
+							[(ngModel)]="breed.information" 
+							matInput placeholder="Informações"
+							maxlength="{{maxLength}}"
+							name="information"
+							#information></textarea>
+						<mat-hint align="end">{{information.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea [(ngModel)]="breed.look" matInput placeholder="Aparência"
-							name="look"></textarea>
+						<textarea 
+							[(ngModel)]="breed.look" 
+							matInput placeholder="Aparência"
+							maxlength="{{maxLength}}"
+							name="look"
+							#look></textarea>
+						<mat-hint align="end">{{look.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea [(ngModel)]="breed.care" matInput
-							placeholder="Cuidados e bem estar" name="care"></textarea>
+						<textarea 
+							[(ngModel)]="breed.care" 
+							matInput placeholder="Cuidados e bem estar"
+							maxlength="{{maxLength}}"
+							name="care"
+							#care></textarea>
+						<mat-hint align="end">{{care.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea [(ngModel)]="breed.curiosity" matInput
-							placeholder="Curiosidades" name="curiosity"></textarea>
+						<textarea 
+							[(ngModel)]="breed.curiosity" 
+							matInput placeholder="Curiosidades"
+							maxlength="{{maxLength}}"
+							name="curiosity"
+							#curiosity></textarea>
+						<mat-hint align="end">{{curiosity.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>

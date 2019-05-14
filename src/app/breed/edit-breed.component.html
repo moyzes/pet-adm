@@ -46,56 +46,64 @@
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea formControlName="origin" id="origin" matInput
-							placeholder="Origem" name="origin"></textarea>
+						<textarea formControlName="origin" id="origin" matInput #origin
+						maxlength="{{maxLength}}" placeholder="Origem" name="origin"></textarea>
+						<mat-hint align="end">{{origin.value.length}} / {{maxLength}}</mat-hint>
+					</mat-form-field>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width">
+						<textarea formControlName="slogan" id="slogan" matInput #slogan 
+						maxlength="{{maxLength}}" placeholder="Slogan" name="slogan"></textarea>
+						<mat-hint align="end">{{slogan.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea formControlName="slogan" id="slogan" matInput
-							placeholder="Slogan" name="slogan"></textarea>
+						<textarea formControlName="summary" id="summary" matInput #summary
+						maxlength="{{maxLength}}" placeholder="Resumo" name="summary"></textarea>
+						<mat-hint align="end">{{summary.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea formControlName="summary" id="summary" matInput
-							placeholder="Resumo" name="summary"></textarea>
+						<textarea formControlName="information" id="information" matInput #information
+						maxlength="{{maxLength}}" placeholder="Informações" name="information"></textarea>
+						<mat-hint align="end">{{information.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea formControlName="information" id="information" matInput
-							placeholder="Informações" name="information"></textarea>
+						<textarea formControlName="look" id="look" matInput #look 
+						maxlength="{{maxLength}}" placeholder="Aparência" name="look"></textarea>
+						<mat-hint align="end">{{look.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea formControlName="look" id="look" matInput placeholder="Aparência"
-							name="look"></textarea>
+						<textarea formControlName="care" id="care" matInput #care 
+						maxlength="{{maxLength}}" placeholder="Cuidados e bem estar" name="care"></textarea>
+						<mat-hint align="end">{{care.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
-						<textarea formControlName="care" id="care" matInput
-							placeholder="Cuidados e bem estar" name="care"></textarea>
-					</mat-form-field>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<textarea formControlName="curiosity" id="curiosity" matInput
-							placeholder="Curiosidades" name="curio"></textarea>
+						<textarea formControlName="curiosity" id="curiosity" matInput #curiosity 
+						maxlength="{{maxLength}}" placeholder="Curiosidades" name="curiosity"></textarea>
+						<mat-hint align="end">{{curiosity.value.length}} / {{maxLength}}</mat-hint>
 					</mat-form-field>
 				</div>
 			</div>

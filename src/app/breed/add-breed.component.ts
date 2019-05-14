@@ -23,6 +23,7 @@ export class AddBreedComponent {
 	visible = true;
 	selectable = true;
 	removable = true;
+	maxLength: number = 200
 
 	constructor(
 		private router: Router,
