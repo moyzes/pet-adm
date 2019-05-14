@@ -13,12 +13,12 @@
 						src="/assets/images/avatar.jpg" alt="Foto">
 				</div>
 			</div>
-			<div class="row">
+			<div *ngIf="usuariologado" class="row">
 				<div class="col">
 					<span id="username">{{usuariologado.name}}</span>
 				</div>
 			</div>
-			<div class="row">
+			<div *ngIf="usuariologado" class="row">
 				<div class="col">
 					<span id="useremail">{{usuariologado.email}}</span>
 				</div>

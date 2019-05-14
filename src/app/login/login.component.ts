@@ -6,7 +6,6 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-logi
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { Router } from '@angular/router';
-import {MatIconModule} from '@angular/material/icon';
 
 @Component({
 	selector: 'app-login',
@@ -28,9 +27,17 @@ export class LoginComponent implements OnInit {
 			if(suser!=null) {
 		
 				this.userService.login(suser).subscribe(data => {
-					this.user = data
-					localStorage.setItem("userlogado", JSON.stringify(this.user));
-					localStorage.setItem("suserlogado", JSON.stringify(this.suser));
+					this.user = data;
+
+					if(localStorage.getItem("userlogado")==null) {
+						localStorage.setItem("userlogado", JSON.stringify(this.user));
+						localStorage.setItem("suserlogado", JSON.stringify(this.suser));
+						location.reload();
+					}
+					else {
+						localStorage.setItem("userlogado", JSON.stringify(this.user));
+						localStorage.setItem("suserlogado", JSON.stringify(this.suser));
+					}
 				});
 			
 			}
@@ -41,30 +48,31 @@ export class LoginComponent implements OnInit {
 	signInWithGoogle(): void {
 		
 		this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-		//this.router.navigate(['login']);
 		
 	}
 
 	signInWithFB(): void {
-		
+
 		this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-		//this.router.navigate(['login']);
-		this.reload;
+	
 	}
 
 	signOut(): void {
-		localStorage.removeItem("userlogado");
-		localStorage.removeItem("suserlogado");
-		this.suser = null;
-		this.user = null;
-		this.authService.signOut();
-		this.router.navigate(['login']);
-		//location.reload();
-		this.reload;
+		
+		Promise.resolve(this.authService.signOut());
+		this.limparLogin();
+		
 	}
 
-	reload(): void {
-		this.router.navigate(['menu']);
+	async limparLogin() {
+		localStorage.removeItem("userlogado");
+		localStorage.removeItem("suserlogado");
+	
+		this.suser = null;
+		this.user = null;
+		this.router.navigate(['login']);
+		location.reload();
+		Promise.resolve(true);
 	}
 
 }

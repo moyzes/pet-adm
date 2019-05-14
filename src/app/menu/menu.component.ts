@@ -33,15 +33,17 @@ export class MenuComponent implements OnInit{
 		this.usuariologado = JSON.parse(localStorage.getItem("userlogado"));
 		this.susuariologado = JSON.parse(localStorage.getItem("suserlogado"));
 
-		this.admin = this.usuariologado.superuser;
-
 		if(!this.usuariologado || !this.admin) {
 
 			this.router.navigate(['login']);
 
 		}
 		
-		console.log("Usuario logado:"+ JSON.stringify(this.usuariologado));
+		if(this.usuariologado!=null) {
+
+			this.admin = this.usuariologado.superuser;
+		}
+		//console.log("Usuario logado:"+ JSON.stringify(this.usuariologado));
 	}
 
 }
