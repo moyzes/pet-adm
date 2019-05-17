@@ -33,6 +33,7 @@ export class BreedComponent implements OnInit{
 		this.actual_page = 1;		
 		this.getBreeds(1);
 	}
+	
 	getPreviousPage():void {
 		if(this.actual_page>1){
 			 this.getBreeds(--this.actual_page);
@@ -41,6 +42,7 @@ export class BreedComponent implements OnInit{
 			this.getFirstPage();
 		 }
 	}
+
 	getNextPage():void {
 		if(this.actual_page<this.last_page){
 			this.getBreeds(++this.actual_page);
@@ -49,6 +51,7 @@ export class BreedComponent implements OnInit{
 		   this.getLastPage();
 		}
 	}
+
 	getLastPage():void {
 		this.getBreeds(this.last_page);
 	}
@@ -73,6 +76,7 @@ export class BreedComponent implements OnInit{
 			this.breeds = this.breeds.filter(u => u !== breed);
 		})
 	};
+
 	editBreed(breed: Breed): void {
 		localStorage.removeItem("editBreedId");
 		localStorage.setItem("editBreedId", breed.id+"");

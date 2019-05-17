@@ -1,4 +1,4 @@
-<form (ngSubmit)="createBreed()">
+<form>
 	<mat-card class="shipping-card">
 		<mat-card-header>
 			<mat-card-title>Cadastro de raças</mat-card-title>
@@ -109,12 +109,6 @@
 					</mat-form-field>
 				</div>
 			</div>
-
-
-
-
-
-
 			<div class="row">
 				<div class="col">
 					<mat-form-field class="full-width">
@@ -131,25 +125,13 @@
 					</mat-form-field>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col">
-					<mat-chip-list #chipList>
-						<mat-chip *ngFor="let attrib of breed.attributesbreed" 
-							[selectable]="selectable"
-							[removable]="removable" 
-							(removed)="removeAttribute(attrib)"
-							[color]="accent">
-							{{attrib.name}}
-							<mat-icon matChipRemove>cancel</mat-icon>
-						</mat-chip>
-					</mat-chip-list>
-				</div>
-			</div>
-
 		</mat-card-content>
 		<mat-card-actions>
-			<button mat-raised-button color="primary">Salvar</button>
-			<button mat-raised-button color="primary" type="button" (click)="addAttribute()">Características</button>
+			<button 
+				mat-raised-button 
+				color="primary" 
+				type="button"
+				(click)="createBreed(); $event.preventDefault()">Adicionar</button>
 		</mat-card-actions>
 	</mat-card>
 </form>
