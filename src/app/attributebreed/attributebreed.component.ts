@@ -4,6 +4,7 @@ import { Attribute } from '../attribute/attribute.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AttributeBreedService } from './attributebreed.service';
 import { EditBreedComponent } from '../breed/edit-breed.component';
+import { AttributeBreed } from './attributebreed.model';
 
 @Component({
 	selector: 'app-attributebreed',
@@ -12,7 +13,9 @@ import { EditBreedComponent } from '../breed/edit-breed.component';
 })
 export class AttributebreedComponent implements OnInit {
 
-	attributes:Attribute[];
+	attributes: Attribute[];
+	availableAttributes: Attribute[] = [];
+	attributeBreeds: AttributeBreed[];
 	breed:any;
 
 	constructor(
@@ -23,28 +26,36 @@ export class AttributebreedComponent implements OnInit {
 
 		this.attributeservice.getAttributes().subscribe(data => {
 			this.attributes = data;
+			this.attributes.forEach(att => {
+				if(request.attributeBreeds.find(ab => ab.attribute_id == att.id) === undefined){
+					this.availableAttributes.push(att)
+				}
+			})
 		});
 
 		this.breed = request.breedForm;
+		this.attributeBreeds = request.attributeBreeds;
 	}
 
-	ngOnInit() {
-	}
+	ngOnInit() { }
 
 	addToBreed(attrib){
+
 		attrib.attribute_id = attrib.id;
+		attrib.attribute_name = attrib.name;
 		attrib.breed_id = this.breed.id;
+		attrib.value = attrib.value;
+
 		this.attributeBreedService.createAttributeBreed(attrib).subscribe(data => {
-			console.log(data);
-			this.breed.attributes.push(attrib);
+			this.attributeBreeds.push(attrib);
 			this.removeAttributeFromList(attrib);
 		});
 	}
 
 	removeAttributeFromList(attribute: Attribute): void {
-		const index = this.attributes.indexOf(attribute);
-			if (index >= 0) {
-			this.attributes.splice(index, 1);
+		const index = this.availableAttributes.indexOf(attribute);
+		if (index >= 0) {
+			this.availableAttributes.splice(index, 1);
 		}
 	}
 

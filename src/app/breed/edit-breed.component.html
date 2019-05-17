@@ -118,12 +118,12 @@
 			<div class="row">
 				<div class="col">
 					<mat-chip-list #chipList>
-						<mat-chip *ngFor="let attrib of editForm.value.attributes" 
+						<mat-chip *ngFor="let attrib of attributeBreeds" 
 							[selectable]="selectable"
 							[removable]="removable" 
 							(removed)="removeAttribute(attrib)"
 							[color]="accent">
-							{{attrib.name}}
+							{{attrib.attribute_name}} - {{attrib.value}}
 							<mat-icon matChipRemove>cancel</mat-icon>
 						</mat-chip>
 					</mat-chip-list>
