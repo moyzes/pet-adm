@@ -41,8 +41,14 @@
 		
 		</mat-table>
 	</mat-card-content>
-</mat-card>
 
+<mat-card-actions>
+	<button mat-raised-button color="primary" (click)="getFirstPage()"><<</button>
+	<button mat-raised-button color="primary" (click)="getPreviousPage()"><</button>
+	<button mat-raised-button color="primary" (click)="getNextPage()">></button>
+	<button mat-raised-button color="primary" (click)="getLastPage()">>></button>
+</mat-card-actions>
+</mat-card>
 <button mat-fab color="primary" routerLink="/addbreed" id="add">
 	<mat-icon>add</mat-icon>
 </button>

@@ -12,6 +12,10 @@ export class BreedComponent implements OnInit{
 	
 	breeds: Breed[];
 	displayedColumns = ['name','specie','origin','slogan','action'];
+	breeds_per_page: number = 8;
+	offset: number = 0;
+	actual_page: number = 1;
+	last_page:number = 10;
 
 	constructor(
 		private router: Router,
@@ -19,11 +23,49 @@ export class BreedComponent implements OnInit{
 	}
 	
 	ngOnInit() {
-		this.breedService.getBreeds()
+		this.offset = 0;
+		this.actual_page = 1;
+		this.getBreeds(1);
+	};
+
+	getFirstPage():void {
+		this.offset = 0;
+		this.actual_page = 1;		
+		this.getBreeds(1);
+	}
+	getPreviousPage():void {
+		if(this.actual_page>1){
+			 this.getBreeds(--this.actual_page);
+		}
+		 else {
+			this.getFirstPage();
+		 }
+	}
+	getNextPage():void {
+		if(this.actual_page<this.last_page){
+			this.getBreeds(++this.actual_page);
+	   }
+		else {
+		   this.getLastPage();
+		}
+	}
+	getLastPage():void {
+		this.getBreeds(this.last_page);
+	}
+
+	getBreeds(page_number: number):void {
+        if(page_number>1) {
+			this.offset = (this.breeds_per_page * page_number) - this.breeds_per_page;
+		}
+		else {
+			this.offset = 0;
+		}
+
+		this.breedService.getBreeds(this.offset,this.breeds_per_page)
 		.subscribe( data => {
 			this.breeds = data;
 		});
-	};
+	}
 
 	deleteBreed(breed: Breed): void {
 		this.breedService.deleteBreed(breed)
