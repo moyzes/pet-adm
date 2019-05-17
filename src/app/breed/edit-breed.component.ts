@@ -9,7 +9,6 @@ import { AttributebreedComponent } from '../attributebreed/attributebreed.compon
 import { Specie } from '../specie/specie.model';
 import { SpecieService } from '../specie/specie.service';
 import { AttributeBreedService } from '../attributebreed/attributebreed.service';
-import { Attribute } from '../attribute/attribute.model';
 import { Measure } from './measure.model';
 import { AttributeBreed } from '../attributebreed/attributebreed.model';
 
@@ -94,7 +93,7 @@ export class EditBreedComponent implements OnInit {
 			//List the attributes for this breed
 			this.attributeBreedService.listAttributeBreed(this.breed.id).subscribe(data => {
 				this.attributeBreeds = <AttributeBreed[]> data;
-				this.attributeBreeds.forEach((att: any, index: number) => {
+				this.attributeBreeds.forEach((att: any) => {
 					const attritube = this.breed.attributes.filter(atb => atb.id === att.attribute_id)[0]
 					att.attribute_name = attritube.name
 				})
@@ -132,7 +131,7 @@ export class EditBreedComponent implements OnInit {
 	}
 
 	removeAttribute(attribute: AttributeBreed): void {
-		this.attributeBreedService.deleteAttributeType(attribute.attribute_id, attribute.breed_id).subscribe(result => {
+		this.attributeBreedService.deleteAttributeType(attribute.attribute_id, attribute.breed_id).subscribe(() => {
 			const index = this.attributeBreeds.indexOf(attribute);
 				if (index >= 0) {
 				this.attributeBreeds.splice(index, 1);
