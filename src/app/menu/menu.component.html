@@ -1,5 +1,5 @@
-<mat-sidenav-container class="sidenav-container">
-	<mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+<mat-sidenav-container class="sidenav-container" id="menu_lateral">
+	<mat-sidenav #drawer class="sidenav" fixedInViewport="false"
 		[attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
 		[opened]="!(isHandset$ | async)">
 
@@ -29,18 +29,17 @@
 		<mat-divider id="userseparator"></mat-divider>
 
 		<mat-nav-list>
-			<a mat-list-item *ngIf="!usuariologado" routerLink="/login" routerLinkActive="active">Login</a>
-			<a mat-list-item *ngIf="usuariologado" routerLink="/login" routerLinkActive="active">Logout</a>
+			<a mat-list-item *ngIf="!usuariologado" routerLink="/login" routerLinkActive="active"><mat-icon>transit_enterexit</mat-icon>Login</a>
+			<a mat-list-item *ngIf="usuariologado" routerLink="/login" routerLinkActive="active"><mat-icon>exit_to_app</mat-icon>Logout</a>
 			<mat-divider id="userseparator"></mat-divider>
-			<a mat-list-item *ngIf="admin" routerLink="/user" routerLinkActive="active">Usuários</a>
-			<a mat-list-item *ngIf="admin" routerLink="/specie" routerLinkActive="active">Espécies</a>
-			<a mat-list-item *ngIf="admin" routerLink="/breed" routerLinkActive="active">Raças</a>
-			<a mat-list-item *ngIf="admin" routerLink="/attributetype" routerLinkActive="active">Tipos de
+			<a mat-list-item *ngIf="admin" routerLink="/user" routerLinkActive="active"><mat-icon>person</mat-icon>Usuários</a>
+			<a mat-list-item *ngIf="admin" routerLink="/specie" routerLinkActive="active"><mat-icon>public</mat-icon>Espécies</a>
+			<a mat-list-item *ngIf="admin" routerLink="/breed" routerLinkActive="active"><mat-icon>pets</mat-icon>Raças</a>
+			<a mat-list-item *ngIf="admin" routerLink="/attributetype" routerLinkActive="active"><mat-icon>style</mat-icon>Tipos de
 				características</a>
-			<a mat-list-item *ngIf="admin" routerLink="/attribute" routerLinkActive="active">Características</a>
-			<a mat-list-item *ngIf="admin" href="#">Animais encontrados</a>
-			<a mat-list-item *ngIf="admin" href="#">Animais perdidos</a>
-
+			<a mat-list-item *ngIf="admin" routerLink="/attribute" routerLinkActive="active"><mat-icon>turned_in_not</mat-icon>Características</a>
+			<a mat-list-item *ngIf="admin" href="#"><mat-icon>location_on</mat-icon>Animais encontrados</a>
+			<a mat-list-item *ngIf="admin" href="#"><mat-icon>search</mat-icon>Animais perdidos</a>
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content>
