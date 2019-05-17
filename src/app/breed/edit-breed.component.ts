@@ -11,6 +11,7 @@ import { SpecieService } from '../specie/specie.service';
 import { AttributeBreedService } from '../attributebreed/attributebreed.service';
 import { Attribute } from '../attribute/attribute.model';
 import { Measure } from './measure.model';
+import { AttributeBreed } from '../attributebreed/attributebreed.model';
 
 @Component({
 	selector: 'app-edit-breed',
@@ -21,6 +22,7 @@ export class EditBreedComponent implements OnInit {
 
 	measures: Measure[];
 	species: Specie[];
+	attributeBreeds: AttributeBreed[];
 	breed: Breed;
 	editForm: FormGroup;
 	visible = true;
@@ -37,13 +39,16 @@ export class EditBreedComponent implements OnInit {
 		private attributeBreedService: AttributeBreedService,
 		private dialog: MatDialog){
 
+		//List species for the select
 		this.specieService.getSpecies().subscribe(data => {
 			this.species = data;
 		});
 
+		//List measures
 		this.breedService.getMeasures().subscribe(data => {
 			this.measures = data;
 		});
+
 	}
 
 	ngOnInit() {
@@ -55,7 +60,7 @@ export class EditBreedComponent implements OnInit {
 			this.router.navigate(['breed']);
 			return;
 		}
-		
+
 		this.editForm = this.formBuilder.group({
 			specie:[],
 			id:[],
@@ -80,15 +85,25 @@ export class EditBreedComponent implements OnInit {
 		});
 		
 		this.breedService.getBreed(+breedId).subscribe(data => {
-			//console.log(data)
+
+			this.breed = <Breed> <unknown>data;
+			console.log(this.breed)
 			this.editForm.setValue(data);
 			this.editForm.controls['specie'].setValue(this.editForm.value.specie.id);
+
+			//List the attributes for this breed
+			this.attributeBreedService.listAttributeBreed(this.breed.id).subscribe(data => {
+				this.attributeBreeds = <AttributeBreed[]> data;
+				this.attributeBreeds.forEach((att: any, index: number) => {
+					const attritube = this.breed.attributes.filter(atb => atb.id === att.attribute_id)[0]
+					att.attribute_name = attritube.name
+				})
+			});
 		});
 	}
 
 	onSubmit() {
 		this.editForm.value.specie = {id:this.editForm.value.specie}
-		//console.log(this.editForm.value)
 		this.breedService.updateBreed(this.editForm.value)
 			.pipe(first())
 			.subscribe(() => {
@@ -105,21 +120,22 @@ export class EditBreedComponent implements OnInit {
 		let dialogRef = this.dialog.open(AttributebreedComponent, {
 			width: '50%',
 			data: {
-				breedForm: this.editForm.value
+				breedForm: this.editForm.value,
+				attributeBreeds: this.attributeBreeds
 			}
 		});
 		dialogRef.afterClosed().subscribe(result => {
 			if (result){
-				this.editForm.value.attributesbreed = result;
+				//this.editForm.value.attributes = result;
 			}
 		});
 	}
 
-	removeAttribute(attribute: Attribute): void {
-		this.attributeBreedService.deleteAttributeType(attribute.id, this.editForm.value.id).subscribe(result => {
-			const index = this.editForm.value.attributes.indexOf(attribute);
+	removeAttribute(attribute: AttributeBreed): void {
+		this.attributeBreedService.deleteAttributeType(attribute.attribute_id, attribute.breed_id).subscribe(result => {
+			const index = this.attributeBreeds.indexOf(attribute);
 				if (index >= 0) {
-				this.editForm.value.attributes.splice(index, 1);
+				this.attributeBreeds.splice(index, 1);
 			}
 		});
 	}

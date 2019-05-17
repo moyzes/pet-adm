@@ -18,7 +18,7 @@ export class Breed {
     origin: string;
     slogan: string;
     summary: string;
-    attributesbreed: Attribute[];
+    attributes: Attribute[];
     pelage: string;
     collor: string
 }

@@ -13,7 +13,11 @@ export class AttributeBreedService {
 	constructor(private router: Router, private http:HttpClient) {}
 
 	//private url = 'https://procura-pet.herokuapp.com/';
-	private url = '/api'; 
+	private url = '/api';
+
+	public listAttributeBreed(breedId:number) {
+		return this.http.get<AttributeBreed[]>(this.url + "/" + "listAttributeBreed" + "/" + breedId);
+	}
 
 	public createAttributeBreed(attbreed: AttributeBreed) {
 		return this.http.post<AttributeBreed>(this.url + "/" + "addAttributeBreed", attbreed);
