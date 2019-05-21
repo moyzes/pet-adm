@@ -15,7 +15,7 @@ export class AttributeService {
 	//private url = 'https://procura-pet.herokuapp.com/';
 	private url = '/api'; 
 	
-	public getAttribute( id: number ) {
+	public getAttribute(id: number) {
 		return this.http.get<Attribute[]>(this.url + "/" + "getAttribute" + "/" + id);
 	}
 

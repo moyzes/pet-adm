@@ -11,6 +11,8 @@ import { SpecieService } from '../specie/specie.service';
 import { AttributeBreedService } from '../attributebreed/attributebreed.service';
 import { Measure } from './measure.model';
 import { AttributeBreed } from '../attributebreed/attributebreed.model';
+import { AttributeService } from '../attribute/attribute.service';
+import { Attribute } from '../attribute/attribute.model';
 
 @Component({
 	selector: 'app-edit-breed',
@@ -36,6 +38,7 @@ export class EditBreedComponent implements OnInit {
 		private breedService: BreedService,
 		private specieService: SpecieService,
 		private attributeBreedService: AttributeBreedService,
+		private attributeService: AttributeService,
 		private dialog: MatDialog){
 
 		//List species for the select
@@ -86,7 +89,6 @@ export class EditBreedComponent implements OnInit {
 		this.breedService.getBreed(+breedId).subscribe(data => {
 
 			this.breed = <Breed> <unknown>data;
-			console.log(this.breed)
 			this.editForm.setValue(data);
 			this.editForm.controls['specie'].setValue(this.editForm.value.specie.id);
 
@@ -94,8 +96,10 @@ export class EditBreedComponent implements OnInit {
 			this.attributeBreedService.listAttributeBreed(this.breed.id).subscribe(data => {
 				this.attributeBreeds = <AttributeBreed[]> data;
 				this.attributeBreeds.forEach((att: any) => {
-					const attritube = this.breed.attributes.filter(atb => atb.id === att.attribute_id)[0]
-					att.attribute_name = attritube.name
+					this.attributeService.getAttribute(att.attribute_id).subscribe(res => {
+						const attrib = <Attribute> <unknown>res;
+						att.attribute_name = attrib.name
+					})
 				})
 			});
 		});
