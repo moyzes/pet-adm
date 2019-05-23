@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router} from "@angular/router";
 import { Breed } from './breed.model';
 import { BreedService } from './breed.service';
@@ -13,6 +13,7 @@ import { Measure } from './measure.model';
 import { AttributeBreed } from '../attributebreed/attributebreed.model';
 import { AttributeService } from '../attribute/attribute.service';
 import { Attribute } from '../attribute/attribute.model';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
 	selector: 'app-edit-breed',
@@ -31,6 +32,7 @@ export class EditBreedComponent implements OnInit {
 	removable = true;
 	Arr = Array;
 	maxLength: number = 200
+	breedId = localStorage.getItem("editBreedId");
 
 	constructor(
 		private formBuilder: FormBuilder,
