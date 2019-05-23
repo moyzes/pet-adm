@@ -45,7 +45,8 @@ import { AttributeBreedService } from './attributebreed/attributebreed.service';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
 
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 let config = new AuthServiceConfig([
 	{
@@ -117,7 +118,8 @@ export function provideConfig() {
 		MatDialogModule,
 		MatChipsModule,
 		MatSlideToggleModule,
-		SocialLoginModule
+		SocialLoginModule,
+		MatFileUploadModule
 	],
 	providers: [
 		UserService,

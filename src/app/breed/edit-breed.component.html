@@ -128,6 +128,19 @@
 						</mat-chip>
 					</mat-chip-list>
 				</div>
+				<div class="col">
+					<label for="singleFile">Upload file</label>
+					<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
+					<br>
+				
+					<mat-file-upload-queue #fileUploadQueue
+						[fileAlias]="'file'"
+						[httpRequestParams]="{'pictureData': 'breed_' + breedId}"
+						[httpUrl]="'http://localhost:8080/api/addPicture'">
+				
+						<mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+					</mat-file-upload-queue>
+				</div>
 			</div>
 		</mat-card-content>
 
