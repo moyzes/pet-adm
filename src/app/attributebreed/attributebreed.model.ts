@@ -6,4 +6,3 @@ export class AttributeBreed {
     breed_id: number;
     value: number;
 }
-
