@@ -47,6 +47,7 @@ import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { MatFileUploadModule } from 'angular-material-fileupload';
+import { PictureService } from './picture/picture.service';
 
 let config = new AuthServiceConfig([
 	{
@@ -128,6 +129,7 @@ export function provideConfig() {
 		BreedService,
 		AttributeService,
 		AttributeBreedService,
+		PictureService,
 		{provide: AuthServiceConfig, useFactory: provideConfig},
 		{provide: MatDialogRef, useValue: {}},
 		{provide: LocationStrategy, useClass: HashLocationStrategy}

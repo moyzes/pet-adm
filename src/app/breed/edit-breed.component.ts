@@ -14,6 +14,7 @@ import { AttributeBreed } from '../attributebreed/attributebreed.model';
 import { AttributeService } from '../attribute/attribute.service';
 import { Attribute } from '../attribute/attribute.model';
 import { HttpParams } from '@angular/common/http';
+import { PictureService } from '../picture/picture.service';
 
 @Component({
 	selector: 'app-edit-breed',
@@ -41,6 +42,7 @@ export class EditBreedComponent implements OnInit {
 		private specieService: SpecieService,
 		private attributeBreedService: AttributeBreedService,
 		private attributeService: AttributeService,
+		private pictureService: PictureService,
 		private dialog: MatDialog){
 
 		//List species for the select
@@ -52,7 +54,6 @@ export class EditBreedComponent implements OnInit {
 		this.breedService.getMeasures().subscribe(data => {
 			this.measures = data;
 		});
-
 	}
 
 	ngOnInit() {
@@ -105,6 +106,12 @@ export class EditBreedComponent implements OnInit {
 				})
 			});
 		});
+
+		//List images
+		this.pictureService.getPicturesForForm("breed", Number.parseInt(breedId)).subscribe(data => {
+			console.log(data)
+		});
+
 	}
 
 	onSubmit() {
