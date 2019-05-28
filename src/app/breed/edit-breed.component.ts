@@ -15,6 +15,8 @@ import { AttributeService } from '../attribute/attribute.service';
 import { Attribute } from '../attribute/attribute.model';
 import { HttpParams } from '@angular/common/http';
 import { PictureService } from '../picture/picture.service';
+import { Picture } from '../picture/picture.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-edit-breed',
@@ -26,6 +28,7 @@ export class EditBreedComponent implements OnInit {
 	measures: Measure[];
 	species: Specie[];
 	attributeBreeds: AttributeBreed[];
+	pictures: Picture[];
 	breed: Breed;
 	editForm: FormGroup;
 	visible = true;
@@ -36,6 +39,7 @@ export class EditBreedComponent implements OnInit {
 	breedId = localStorage.getItem("editBreedId");
 
 	constructor(
+		private sanitizer: DomSanitizer,
 		private formBuilder: FormBuilder,
 		private router: Router,
 		private breedService: BreedService,
@@ -109,7 +113,14 @@ export class EditBreedComponent implements OnInit {
 
 		//List images
 		this.pictureService.getPicturesForForm("breed", Number.parseInt(breedId)).subscribe(data => {
-			console.log(data)
+			
+			this.pictures = data;
+			this.pictures.forEach(pic => {
+				pic.base64 = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'+pic.base64);
+			})
+
+			//this.pictures = data;
+			console.log(this.pictures)
 		});
 
 	}
@@ -150,5 +161,9 @@ export class EditBreedComponent implements OnInit {
 				this.attributeBreeds.splice(index, 1);
 			}
 		});
+	}
+
+	removePicture(id: number){
+		console.log(id)
 	}
 }

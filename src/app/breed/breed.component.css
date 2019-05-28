@@ -28,3 +28,14 @@
 .measures {
 	margin-right: 20px;
 }
+
+.gallery {
+	max-width: 200px;
+	position: relative;
+}
+.gallery mat-icon{
+	position: absolute;
+	top: 20px;
+	right: 10px;
+	cursor: pointer;
+}

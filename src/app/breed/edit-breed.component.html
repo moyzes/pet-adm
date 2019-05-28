@@ -4,23 +4,28 @@
 			<mat-card-title>Edição de raças</mat-card-title>
 		</mat-card-header>
 		<mat-card-content>
+			
 			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<input formControlName="name" id="name" matInput placeholder="Nome"
-							name="name">
-					</mat-form-field>
-				</div>
-				<div class="col">
-					<mat-form-field>
-						<mat-label>Espécie</mat-label>
-						<mat-select 
-							formControlName="specie" name="specie">
-							<mat-option *ngFor="let specie of species"
-								[value]="specie.id">{{specie.name}}</mat-option>
-						</mat-select>
-					</mat-form-field>
-				</div>
+				<mat-card *ngFor="let pic of pictures" class="gallery">
+					<mat-icon (click)="removePicture(pic.id)">remove_circle</mat-icon>
+					<img mat-card-image [src]="pic.base64">
+				</mat-card>
+			</div>
+
+			<div class="row">
+				<mat-form-field class="full-width">
+					<input formControlName="name" id="name" matInput placeholder="Nome"
+						name="name">
+				</mat-form-field>
+
+				<mat-form-field>
+					<mat-label>Espécie</mat-label>
+					<mat-select 
+						formControlName="specie" name="specie">
+						<mat-option *ngFor="let specie of species"
+							[value]="specie.id">{{specie.name}}</mat-option>
+					</mat-select>
+				</mat-form-field>
 			</div>
 
 			<!-- Measures section start -->
@@ -44,76 +49,74 @@
 			<!-- Measures section end -->
 
 			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<textarea formControlName="origin" id="origin" matInput
-							placeholder="Origem" name="origin"></textarea>
-					</mat-form-field>
-				</div>
+				<mat-form-field class="full-width">
+					<textarea formControlName="origin" id="origin" matInput
+						placeholder="Origem" name="origin"></textarea>
+				</mat-form-field>
 			</div>
 			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<textarea formControlName="slogan" id="slogan" matInput
-							placeholder="Slogan" name="slogan"></textarea>
-					</mat-form-field>
-				</div>
+
+				<mat-form-field class="full-width">
+					<textarea formControlName="slogan" id="slogan" matInput
+						placeholder="Slogan" name="slogan"></textarea>
+				</mat-form-field>
+	
 			</div>
 			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<textarea formControlName="summary" id="summary" matInput
-							placeholder="Resumo" name="summary"></textarea>
-					</mat-form-field>
-				</div>
+
+				<mat-form-field class="full-width">
+					<textarea formControlName="summary" id="summary" matInput
+						placeholder="Resumo" name="summary"></textarea>
+				</mat-form-field>
+
 			</div>
 			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<textarea formControlName="information" id="information" matInput
-							placeholder="Informações" name="information"></textarea>
+
+				<mat-form-field class="full-width">
+					<textarea formControlName="information" id="information" matInput
+						placeholder="Informações" name="information"></textarea>
 					</mat-form-field>
-				</div>
+
 			</div>
 			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<textarea formControlName="look" id="look" matInput placeholder="Aparência"
-							name="look"></textarea>
-					</mat-form-field>
-				</div>
+
+				<mat-form-field class="full-width">
+					<textarea formControlName="look" id="look" matInput placeholder="Aparência"
+						name="look"></textarea>
+				</mat-form-field>
+
 			</div>
 			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<textarea formControlName="pelage" id="pelage" matInput placeholder="Pelagem"
-							name="pelage"></textarea>
-					</mat-form-field>
-				</div>
+
+				<mat-form-field class="full-width">
+					<textarea formControlName="pelage" id="pelage" matInput placeholder="Pelagem"
+						name="pelage"></textarea>
+				</mat-form-field>
+
 			</div>
 			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<textarea formControlName="collor" id="collor" matInput placeholder="Cor"
-							name="collor"></textarea>
-					</mat-form-field>
-				</div>
+
+				<mat-form-field class="full-width">
+					<textarea formControlName="collor" id="collor" matInput placeholder="Cor"
+						name="collor"></textarea>
+				</mat-form-field>
+
 			</div>
 			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<textarea formControlName="care" id="care" matInput
-							placeholder="Cuidados e bem estar" name="care"></textarea>
-					</mat-form-field>
-				</div>
+
+				<mat-form-field class="full-width">
+					<textarea formControlName="care" id="care" matInput
+						placeholder="Cuidados e bem estar" name="care"></textarea>
+				</mat-form-field>
+
 			</div>
 			<div class="row">
-				<div class="col">
-					<mat-form-field class="full-width">
-						<textarea formControlName="curiosity" id="curiosity" matInput
-							placeholder="Curiosidades" name="curio"></textarea>
-					</mat-form-field>
-				</div>
+
+				<mat-form-field class="full-width">
+					<textarea formControlName="curiosity" id="curiosity" matInput
+						placeholder="Curiosidades" name="curio"></textarea>
+				</mat-form-field>
+
 			</div>
 			<div class="row">
 				<div class="col">
