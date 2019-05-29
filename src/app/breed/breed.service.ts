@@ -22,8 +22,8 @@ export class BreedService {
 	}
 
 	public getBreeds(offset: number, limit: number) {
-		console.log(this.url + "/" + "listBreeds/" + offset + "/" + limit + "/name");  
-		return this.http.get<Breed[]>(this.url + "/" + "listBreeds/" + offset + "/" + limit + "/name");
+		//console.log(this.url + "/" + "listBreeds/" + offset + "/" + limit + "/name");  
+		return this.http.get<Response>(this.url + "/" + "listBreeds/" + offset + "/" + limit + "/name", {observe: 'response'});
 	}
 
 	public deleteBreed(breed: Breed) {

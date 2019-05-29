@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Breed } from './breed.model';
 import { BreedService } from './breed.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
 	selector: 'app-breed',
@@ -37,17 +38,15 @@ export class BreedComponent implements OnInit{
 	getPreviousPage():void {
 		if(this.actual_page>1){
 			 this.getBreeds(--this.actual_page);
-		}
-		 else {
+		} else {
 			this.getFirstPage();
-		 }
+		}
 	}
 
 	getNextPage():void {
 		if(this.actual_page<this.last_page){
 			this.getBreeds(++this.actual_page);
-	   }
-		else {
+	    } else {
 		   this.getLastPage();
 		}
 	}
@@ -57,22 +56,28 @@ export class BreedComponent implements OnInit{
 	}
 
 	getBreeds(page_number: number):void {
-        if(page_number>1) {
+
+		if(page_number>1) {
 			this.offset = (this.breeds_per_page * page_number) - this.breeds_per_page;
-		}
-		else {
+		} else {
 			this.offset = 0;
 		}
 
-		this.breedService.getBreeds(this.offset,this.breeds_per_page)
-		.subscribe( data => {
-			this.breeds = data;
+		this.breedService.getBreeds(this.offset,this.breeds_per_page).subscribe((res:HttpResponse<Response>) => {
+			
+			//aqui a lista de breeds
+			this.breeds = <Breed[]> <unknown> res.body
+			console.log(this.breeds);
+
+			//aqui o header
+			let total_count = res.headers.get("total_record_count")
+			console.log(total_count);
+
 		});
 	}
 
 	deleteBreed(breed: Breed): void {
-		this.breedService.deleteBreed(breed)
-		.subscribe(() => {
+		this.breedService.deleteBreed(breed).subscribe(() => {
 			this.breeds = this.breeds.filter(u => u !== breed);
 		})
 	};
