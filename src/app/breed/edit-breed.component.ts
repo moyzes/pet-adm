@@ -13,7 +13,6 @@ import { Measure } from './measure.model';
 import { AttributeBreed } from '../attributebreed/attributebreed.model';
 import { AttributeService } from '../attribute/attribute.service';
 import { Attribute } from '../attribute/attribute.model';
-import { HttpParams } from '@angular/common/http';
 import { PictureService } from '../picture/picture.service';
 import { Picture } from '../picture/picture.model';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -100,29 +99,19 @@ export class EditBreedComponent implements OnInit {
 			this.editForm.controls['specie'].setValue(this.editForm.value.specie.id);
 
 			//List the attributes for this breed
-			this.attributeBreedService.listAttributeBreed(this.breed.id).subscribe(data => {
-				this.attributeBreeds = <AttributeBreed[]> data;
-				this.attributeBreeds.forEach((att: any) => {
-					this.attributeService.getAttribute(att.attribute_id).subscribe(res => {
-						const attrib = <Attribute> <unknown>res;
-						att.attribute_name = attrib.name
-					})
-				})
-			});
-		});
+			this.loadPictures()
 
-		//List images
-		this.pictureService.getPicturesForForm("breed", Number.parseInt(breedId)).subscribe(data => {
+		});
+	}
+
+	loadPictures(){
+		this.pictureService.getPicturesForForm("breed", Number.parseInt(this.breedId)).subscribe(data => {
 			
 			this.pictures = data;
 			this.pictures.forEach(pic => {
 				pic.base64 = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'+pic.base64);
 			})
-
-			//this.pictures = data;
-			console.log(this.pictures)
 		});
-
 	}
 
 	onSubmit() {
@@ -165,5 +154,17 @@ export class EditBreedComponent implements OnInit {
 
 	removePicture(id: number){
 		console.log(id)
+		this.pictureService.deletePicture(id).subscribe(result => {
+			this.pictures = this.pictures.filter(pic => {
+				return pic.id !== id;
+			});
+		})
+	}
+
+	public uploadEvent($event: any) {
+		const stringEvent = JSON.stringify($event);
+		if (stringEvent.indexOf("Created")!=-1){
+			this.loadPictures();
+		}
 	}
 }

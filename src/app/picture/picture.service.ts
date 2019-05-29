@@ -18,4 +18,8 @@ export class PictureService {
 	public getPicturesForForm(formName:string, entityId:number) {
 		return this.http.get<Picture[]>(this.url + "/" + "listPictures" + "/" + formName + "/" + entityId);
 	}
+
+	public deletePicture(id: number) {
+		return this.http.delete(this.url + "/"+ "deletePicture" + "/" + id);
+	}
 }
