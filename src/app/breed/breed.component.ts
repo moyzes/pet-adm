@@ -16,7 +16,7 @@ export class BreedComponent implements OnInit{
 	breeds_per_page: number = 8;
 	offset: number = 0;
 	actual_page: number = 1;
-	last_page:number = 10;
+	last_page:number = 0;
 
 	constructor(
 		private router: Router,
@@ -67,11 +67,12 @@ export class BreedComponent implements OnInit{
 			
 			//aqui a lista de breeds
 			this.breeds = <Breed[]> <unknown> res.body
-			console.log(this.breeds);
+		//	console.log(this.breeds);
 
 			//aqui o header
-			let total_count = res.headers.get("total_record_count")
+			let total_count = res.headers.get("total_record_count");
 			console.log(total_count);
+			this.last_page = parseInt(total_count) / this.breeds_per_page;
 
 		});
 	}
