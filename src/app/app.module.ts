@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule, MatSlideToggleModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule, MatSlideToggleModule, MatStepperModule } from '@angular/material';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -48,6 +48,7 @@ import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { PictureService } from './picture/picture.service';
+import { FoundComponent } from './found/found.component';
 
 let config = new AuthServiceConfig([
 	{
@@ -96,7 +97,8 @@ export function provideConfig() {
 		BreedComponent,
 		ConfirmComponent,
 		AttributebreedComponent,
-		LoginComponent
+		LoginComponent,
+		FoundComponent
 	],
 	imports: [
 		BrowserModule,
@@ -120,7 +122,8 @@ export function provideConfig() {
 		MatChipsModule,
 		MatSlideToggleModule,
 		SocialLoginModule,
-		MatFileUploadModule
+		MatFileUploadModule,
+		MatStepperModule
 	],
 	providers: [
 		UserService,
